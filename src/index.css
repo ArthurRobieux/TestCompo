@@ -35,6 +35,7 @@ table{
   margin-right: auto;
   border-collapse: collapse;
   border: 1px solid black;
+  width: 600px;
 }
 
 td{
@@ -46,25 +47,51 @@ td{
   margin: 0px;
 }
 
-.list_present_members:hover{
+th{
+  width: 100px;
+}
+
+.present_members:hover, .waiting_members:hover, .absent_members:hover{
   background-color: darkgrey;
 }
 
-.list_absent_members:hover{
-  background-color: darkgrey;
-}
-
-.present_members{
+.title_present_members{
   background-color: lightgreen;
   height: 35px;
 }
 
-.absent_members{
+.title_present_members:hover{
+  background-color: green;
+}
+
+.title_waiting_members{
+  background-color: lemonchiffon;
+  height: 35px;
+}
+
+.title_waiting_members:hover{
+  background-color: yellow;
+}
+
+.title_absent_members{
   background-color: darksalmon;
   height: 35px;
 }
 
+.title_absent_members:hover{
+  background-color: red;
+}
+
+#body_present_members, #body_absent_members, #body_waiting_members{
+  display: table-row-group;
+}
+
+
 .header_members{
   background-color: darkgrey;
   border: 1px solid black;
+}
+
+.logo_presence{
+  height: 18px;
 }

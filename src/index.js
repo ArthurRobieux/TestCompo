@@ -10,7 +10,7 @@ const members = [
         {name: 'Guillaume', age: '48', buts: '0', pd: '4', carton: '0', presence: 1},
         {name: 'Claire', age: '47', buts: '1', pd: '3', carton: '0', presence: 0},
         {name: 'Thibaud', age: '18', buts: '2', pd: '2', carton: '0', presence: 0},
-        {name: 'Arnaud', age: '10', buts: '4', pd: '1', carton: '1', presence: 1},
+        {name: 'Arnaud', age: '10', buts: '4', pd: '1', carton: '1', presence: 2},
     ];
 
 
@@ -80,38 +80,50 @@ class TableApp extends React.Component {
 class MemberList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { present_members: [], absent_members: [] };
-    this.change_presence = this.change_presence.bind(this);
-    this.sorting_members = this.sorting_members.bind(this);
+    this.state = { present_members: [], absent_members: [], waiting_members: [] };
   }
 
   sorting_members(){
 
         this.state.present_members = [];
+        this.state.waiting_members = [];
         this.state.absent_members = [];
 
         /*this.setState({present_members: [], absent_members: []});*/
 
-      for(var i= 0; i < members.length; i++){
-        if(members[i].presence === 1){
-            this.state.present_members.push(members[i]);
+      for(var i= 0; i < this.props.members.length; i++){
+        if(this.props.members[i].presence === 1){
+            this.state.present_members.push(this.props.members[i]);
+        }
+        else if(this.props.members[i].presence === 0){
+            this.state.absent_members.push(this.props.members[i]);
         }
         else{
-            this.state.absent_members.push(members[i]);
+            this.state.waiting_members.push(this.props.members[i]);
         }
       }
   }
 
-
-  change_presence(item){
+  change_presence(item, action){
 
       this.setState({});
 
-      for(var i= 0; i < members.length; i++){
-        if(item === members[i]){
-            if(item.presence === 0){members[i].presence=1;}
-            else{members[i].presence=0;}
+      for(var i= 0; i < this.props.members.length; i++){
+        if(item === this.props.members[i]){
+
+            this.props.members[i].presence=action;
+
         }
+      }
+  }
+
+  show_hide_list(id){
+      this.setState({});
+      if(document.getElementById(id).style.display === 'table-row-group') {
+          document.getElementById(id).style.display = 'none';
+      }
+      else{
+          document.getElementById(id).style.display = 'table-row-group';
       }
   }
 
@@ -119,17 +131,21 @@ class MemberList extends React.Component {
   render() {
 
     //Sorting members
-    this.sorting_members()
+    this.sorting_members();
 
 
     return (
-      <div class="member_list">
+      <div className="member_list">
 
           <h3>Tableau trié par présence</h3>
 
           <table>
-              <tr class="present_members">
-                  <th>Présents</th>
+
+              {/* PRESENT MEMBERS */}
+
+              <thead id="header_present_members" >
+              <tr className="title_present_members" onClick={() => this.show_hide_list("body_present_members")}>
+                  <th>Présents ({this.state.present_members.length})</th>
                   <th></th>
                   <th></th>
                   <th></th>
@@ -137,7 +153,7 @@ class MemberList extends React.Component {
                   <th></th>
               </tr>
 
-              <tr class="header_members">
+              <tr className="header_members">
                   <th>Name</th>
                   <th>Age</th>
                   <th>Buts</th>
@@ -145,43 +161,81 @@ class MemberList extends React.Component {
                   <th>Cartons</th>
                   <th>Présence</th>
               </tr>
+              </thead>
 
+              <tbody id="body_present_members">
                {this.state.present_members.map(item => (
-                  <tr class="list_present_members" onClick={() => this.change_presence(item)}>
+                  <tr className="present_members" >
                       <td>{item.name}</td>
                       <td>{item.age}</td>
                       <td>{item.buts}</td>
                       <td>{item.pd}</td>
                       <td>{item.carton}</td>
-                      <td>{item.presence}</td>
+                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 2)}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 0)}/></td>
                   </tr>
               ))}
+              </tbody>
 
-              <tr class="absent_members">
-                  <th>Absents</th>
+
+              {/* WAITING MEMBERS */}
+
+              <thead id="header_waiting_members" >
+              <tr className="title_waiting_members" onClick={() => this.show_hide_list("body_waiting_members")}>
+                  <th>En attente ({this.state.waiting_members.length})</th>
                   <th></th>
                   <th></th>
                   <th></th>
                   <th></th>
                   <th></th>
               </tr>
+              </thead>
 
+              <tbody id="body_waiting_members">
+               {this.state.waiting_members.map(item => (
+                  <tr className="waiting_members">
+                      <td>{item.name}</td>
+                      <td>{item.age}</td>
+                      <td>{item.buts}</td>
+                      <td>{item.pd}</td>
+                      <td>{item.carton}</td>
+                      <td><img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 1)}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 0)}/></td>
+                  </tr>
+              ))}
+              </tbody>
+
+
+              {/* ABSENT MEMBERS */}
+
+
+              <thead id="header_absent_members">
+              <tr className="title_absent_members" onClick={() => this.show_hide_list("body_absent_members")}>
+                  <th>Absents ({this.state.absent_members.length})</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+              </tr>
+              </thead>
+
+               <tbody id="body_absent_members">
                {this.state.absent_members.map(item => (
-                  <tr class="list_absent_members" onClick={() => this.change_presence(item)}>
+                  <tr className="absent_members" >
 
                       <td>{item.name}</td>
                       <td>{item.age}</td>
                       <td>{item.buts}</td>
                       <td>{item.pd}</td>
                       <td>{item.carton}</td>
-                      <td>{item.presence}</td>
+                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 2)}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 1)}/></td>
                   </tr>
               ))}
-
+              </tbody>
           </table>
 
+          {/*GENERAL*/}
 
-          <h3>Tableau des members</h3>
+          <h3>Tableau des membres</h3>
 
           <table>
               <tr className="header_members">
@@ -194,7 +248,7 @@ class MemberList extends React.Component {
               </tr>
 
               {members.map(item => (
-                  <tr className="list_present_members" onClick={() => this.change_presence(item)}>
+                  <tr className="present_members" >
                       <td>{item.name}</td>
                       <td>{item.age}</td>
                       <td>{item.buts}</td>
@@ -206,6 +260,7 @@ class MemberList extends React.Component {
           </table>
 
       </div>
+
     );
   }
 }
