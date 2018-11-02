@@ -1,9 +1,9 @@
 body{
-  background-color:grey;
+  background-color:white;
 }
 
 h1, h3{
-  color:#660066;
+  color:black;
 }
 
 div{
@@ -20,27 +20,51 @@ div{
 }
 
 .member_list{
-  color: purple;
+  text-align: center;
+  width: 50%;
+  margin-left:auto;
+  margin-right: auto;
+  color: black;
+  background-color: lightgrey;
+  border: 1px solid black;
   padding: 20px 20px 20px 20px;
 }
 
 table{
+  margin-left:auto;
+  margin-right: auto;
   border-collapse: collapse;
+  border: 1px solid black;
 }
 
 td{
   width: 75px;
   text-align: center;
-  color:blue;
+  color:black;
   padding: 10px;
   border: 1px solid black;
   margin: 0px;
 }
 
+.list_present_members:hover{
+  background-color: darkgrey;
+}
+
+.list_absent_members:hover{
+  background-color: darkgrey;
+}
+
 .present_members{
-  background-color: green;
+  background-color: lightgreen;
+  height: 35px;
 }
 
 .absent_members{
-  background-color: red;
+  background-color: darksalmon;
+  height: 35px;
+}
+
+.header_members{
+  background-color: darkgrey;
+  border: 1px solid black;
 }
