@@ -8,9 +8,11 @@ import FutureMemberListWithTreshold from './MemberList/future_member_list_tresho
 
 
 // Load data from API
-//103 = past, 131 = past with waiting, 74 = future
-const event_id = 131;
-const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/6/events/' + event_id + '/';
+const team_id = 6;
+
+//103 = future, 131 = future with treshold, 74 = past
+const event_id = 74;
+const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + team_id +'/events/' + event_id + '/';
 const bearer = "Bearer b15dfb6dee52b68d5eafe5602ddc79afabf2717a";
 
 
@@ -19,21 +21,21 @@ const bearer = "Bearer b15dfb6dee52b68d5eafe5602ddc79afabf2717a";
 class TableApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: {}, text_name: '', text_age: '' };
+    this.state = { data: {}};
   }
 
     //Show members list Past or Future
     show_members_list(){
 
       if(this.state.data.is_past) {
-              return (<PastMemberList data={this.state.data}/>);
+              return (<PastMemberList data={this.state.data} team_id={team_id}/>);
       }
       else{
           if(this.state.data.available_threshold_reached) {
-              return (<FutureMemberListWithTreshold data={this.state.data}/>);
+              return (<FutureMemberListWithTreshold data={this.state.data} team_id={team_id}/>);
           }
           else{
-              return (<FutureMemberList data={this.state.data}/>);
+              return (<FutureMemberList data={this.state.data} team_id={team_id}/>);
           }
       }
     }

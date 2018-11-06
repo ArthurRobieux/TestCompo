@@ -23,7 +23,7 @@ class FutureMemberListWithTreshold extends React.Component {
                   const newMember = {
                       first_name: this.props.data.attendees[i].results[j].profile.first_name,
                       last_name: this.props.data.attendees[i].results[j].profile.last_name,
-                      presence: i,
+                      id: this.props.data.attendees[i].results[j].profile.id,
                   };
 
                   //Add the member in the right list
@@ -48,17 +48,27 @@ class FutureMemberListWithTreshold extends React.Component {
       console.log(this.props.data);
   }
 
-  change_presence(item, action){
+  change_presence(item, attendance){
 
-      this.setState({});
+        this.setState({});
 
-      for(var i= 0; i < this.props.members.length; i++){
-        if(item === this.props.members[i]){
+        const event_id = this.props.data.id;
+        const profile_id = item.id;
 
-            this.props.members[i].presence=action;
+        const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + this.props.team_id + '/events/'
+            + event_id + '/profiles/' + profile_id + '/';
+        const bearer = "Bearer b15dfb6dee52b68d5eafe5602ddc79afabf2717a";
 
-        }
-      }
+        fetch(API_URL, {
+            method: "PUT",
+            headers: {
+                "Authorization": bearer,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "attendance_group": attendance,
+            })
+        })
   }
 
   show_hide_list(id){
@@ -104,7 +114,7 @@ class FutureMemberListWithTreshold extends React.Component {
                   <tr className="present_members" >
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 2)}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 0)}/></td>
+                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 'unavailable')}/></td>
                   </tr>
               ))}
               </tbody>
@@ -125,7 +135,7 @@ class FutureMemberListWithTreshold extends React.Component {
 
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 2)}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 1)}/></td>
+                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 'participant')}/></td>
                   </tr>
               ))}
               </tbody>
@@ -145,7 +155,7 @@ class FutureMemberListWithTreshold extends React.Component {
                   <tr className="rsvp_members">
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 1)}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 0)}/></td>
+                      <td><img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 'participant')}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 'unavailable')}/></td>
                   </tr>
               ))}
               </tbody>
@@ -166,7 +176,7 @@ class FutureMemberListWithTreshold extends React.Component {
 
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 2)}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 1)}/></td>
+                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 'participant')}/></td>
                   </tr>
               ))}
               </tbody>
