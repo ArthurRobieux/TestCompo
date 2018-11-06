@@ -63,6 +63,7 @@ th{
   cursor: pointer;
   background-color: lightgreen;
   height: 35px;
+  transition-duration: 0.2s;
 }
 
 .title_present_members:hover, .title_waiting_members:hover{
@@ -73,6 +74,7 @@ th{
   cursor: pointer;
   background-color: lemonchiffon;
   height: 35px;
+  transition-duration: 0.2s;
 }
 
 .title_rsvp_members:hover{
@@ -83,6 +85,7 @@ th{
   cursor: pointer;
   background-color: darksalmon;
   height: 35px;
+  transition-duration: 0.2s;
 }
 
 .title_absent_members:hover, .title_not_selected_members:hover{

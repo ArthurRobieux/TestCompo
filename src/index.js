@@ -7,11 +7,11 @@ import FutureMemberList from './MemberList/future_member_list.js';
 import FutureMemberListWithTreshold from './MemberList/future_member_list_treshold.js';
 
 
-// Load data from API
-const team_id = 6;
+// Constants
 
-//103 = future, 131 = future with treshold, 74 = past
-const event_id = 74;
+const team_id = 6;
+const event_id = 74;    //103 = future, 131 = future with treshold, 74 = past
+
 const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + team_id +'/events/' + event_id + '/';
 const bearer = "Bearer b15dfb6dee52b68d5eafe5602ddc79afabf2717a";
 
@@ -61,6 +61,7 @@ class TableApp extends React.Component {
 
   render() {
 
+      // Call this function each second
       this.get_api_data();
 
       return (

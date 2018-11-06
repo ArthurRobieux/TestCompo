@@ -97,9 +97,7 @@ class FutureMemberListWithTreshold extends React.Component {
 
               <thead id="header_present_members" >
               <tr className="title_present_members" onClick={() => this.show_hide_list("body_present_members")}>
-                  <th>Présents ({this.state.present_members.length})</th>
-                  <th></th>
-                  <th></th>
+                  <th colSpan="3">Présents ({this.state.present_members.length})</th>
               </tr>
 
               <tr className="header_members">
@@ -111,10 +109,10 @@ class FutureMemberListWithTreshold extends React.Component {
 
               <tbody id="body_present_members">
                {this.state.present_members.map(item => (
-                  <tr className="present_members" >
+                  <tr className="present_members" key={item.id}>
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 'unavailable')}/></td>
+                      <td><img className="logo_presence" src="Waiting.png" alt="wait" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="No.png" alt="no" onClick={() => this.change_presence(item, 'unavailable')}/></td>
                   </tr>
               ))}
               </tbody>
@@ -123,19 +121,17 @@ class FutureMemberListWithTreshold extends React.Component {
 
               <thead id="header_waiting_members">
               <tr className="title_waiting_members" onClick={() => this.show_hide_list("body_waiting_members")}>
-                  <th>Liste d'attente ({this.state.waiting_members.length})</th>
-                  <th></th>
-                  <th></th>
+                  <th colSpan="3">Liste d'attente ({this.state.waiting_members.length})</th>
               </tr>
               </thead>
 
                <tbody id="body_waiting_members">
                {this.state.waiting_members.map(item => (
-                  <tr className="waiting_members" >
+                  <tr className="waiting_members" key={item.id}>
 
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 'participant')}/></td>
+                      <td><img className="logo_presence" src="Waiting.png" alt="wait" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="Yes.png" alt="yes" onClick={() => this.change_presence(item, 'participant')}/></td>
                   </tr>
               ))}
               </tbody>
@@ -144,18 +140,16 @@ class FutureMemberListWithTreshold extends React.Component {
 
               <thead id="header_rsvp_members" >
               <tr className="title_rsvp_members" onClick={() => this.show_hide_list("body_rsvp_members")}>
-                  <th>En attente de réponse ({this.state.rsvp_members.length})</th>
-                  <th></th>
-                  <th></th>
+                  <th colSpan="3">En attente de réponse ({this.state.rsvp_members.length})</th>
               </tr>
               </thead>
 
               <tbody id="body_rsvp_members">
                {this.state.rsvp_members.map(item => (
-                  <tr className="rsvp_members">
+                  <tr className="rsvp_members" key={item.id}>
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 'participant')}/> <img className="logo_presence" src="No.png" onClick={() => this.change_presence(item, 'unavailable')}/></td>
+                      <td><img className="logo_presence" src="Yes.png" alt="yes" onClick={() => this.change_presence(item, 'participant')}/> <img className="logo_presence" src="No.png" alt="no" onClick={() => this.change_presence(item, 'unavailable')}/></td>
                   </tr>
               ))}
               </tbody>
@@ -164,19 +158,17 @@ class FutureMemberListWithTreshold extends React.Component {
 
               <thead id="header_absent_members">
               <tr className="title_absent_members" onClick={() => this.show_hide_list("body_absent_members")}>
-                  <th>Absents ({this.state.absent_members.length})</th>
-                  <th></th>
-                  <th></th>
+                  <th colSpan="3">Absents ({this.state.absent_members.length})</th>
               </tr>
               </thead>
 
                <tbody id="body_absent_members">
                {this.state.absent_members.map(item => (
-                  <tr className="absent_members" >
+                  <tr className="absent_members" key={item.id}>
 
                       <td>{item.first_name}</td>
                       <td>{item.last_name}</td>
-                      <td><img className="logo_presence" src="Waiting.png" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="Yes.png" onClick={() => this.change_presence(item, 'participant')}/></td>
+                      <td><img className="logo_presence" src="Waiting.png" alt="wait" onClick={() => this.change_presence(item, 'rsvp')}/> <img className="logo_presence" src="Yes.png" alt="yes" onClick={() => this.change_presence(item, 'participant')}/></td>
                   </tr>
               ))}
               </tbody>
