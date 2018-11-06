@@ -51,41 +51,41 @@ th{
   width: 100px;
 }
 
-.present_members:hover, .waiting_members:hover, .absent_members:hover{
+.present_members:hover, .rsvp_members:hover, .not_selected_members:hover, .absent_members:hover, .waiting_members:hover{
   background-color: darkgrey;
 }
 
-.title_present_members{
+.title_present_members, .title_waiting_members {
   cursor: pointer;
   background-color: lightgreen;
   height: 35px;
 }
 
-.title_present_members:hover{
+.title_present_members:hover, .title_waiting_members:hover{
   background-color: green;
 }
 
-.title_waiting_members{
+.title_rsvp_members{
   cursor: pointer;
   background-color: lemonchiffon;
   height: 35px;
 }
 
-.title_waiting_members:hover{
+.title_rsvp_members:hover{
   background-color: yellow;
 }
 
-.title_absent_members{
+.title_absent_members, .title_not_selected_members{
   cursor: pointer;
   background-color: darksalmon;
   height: 35px;
 }
 
-.title_absent_members:hover{
+.title_absent_members:hover, .title_not_selected_members:hover{
   background-color: red;
 }
 
-#body_present_members, #body_absent_members, #body_waiting_members{
+#body_present_members, #body_absent_members, #body_rsvp_members, #body_not_selected_members, #body_waiting_members{
   display: table-row-group;
 }
 
