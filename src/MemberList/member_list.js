@@ -18,22 +18,35 @@ class MemberList extends React.Component {
     catch(error) {
         console.error('No data for attendance group');
     }
-    console.log(this.state.attendance_group);
+    console.log(this.props.data);
   }
 
-
-  show_logo_change_presence(profile, current_slug_name){
+  show_change_presence(profile, current_slug_name){
 
       return(
           <span>
           {this.state.attendance_group.map(group => (
-            <img className="logo_presence" src="Yes.png" alt="yes" onClick={() => this.change_presence(profile.id, group)}/>
+            <img className="logo_presence" src={this.get_group_image(group)} alt="yes" onClick={() => this.change_presence(profile.id, group)}/>
           ))}
-
           </span>
       );
-
   }
+
+  get_group_image(group){
+      if(group==='played' || group==='available' || group==='present' || group==='waiting_list' || group==='participant'){
+          return("Yes.png")
+      }
+      else if(group==='rsvp'){
+          return("Waiting.png")
+      }
+      else if(group==='not_selected'){
+          return("Not_Selected.png")
+      }
+      else{
+          return("No.png")
+      }
+  }
+
 
   change_presence(profile_id, attendance){
 
@@ -54,8 +67,28 @@ class MemberList extends React.Component {
             body: JSON.stringify({
                 "attendance_group": attendance,
             })
-        })
+        });
 
+
+
+      // ICI ON MET A JOUR LE PROPS.DATA EN FAISANT CHANGE_PRESENCE
+
+      this.props.data.attendees[1].slug_name = "available";
+
+  }
+
+
+  show_hide_list(group_slug_name){
+      this.setState({});
+
+      const id = 'body_' + group_slug_name + '_members';
+
+      if(document.getElementById(id).style.display === 'table-row-group') {
+          document.getElementById(id).style.display = 'none';
+      }
+      else{
+          document.getElementById(id).style.display = 'table-row-group';
+      }
   }
 
   // 3 Fonctions qui vont charger le bon CSS selon le groupe
@@ -66,6 +99,10 @@ class MemberList extends React.Component {
 
   define_head_class(group){
       return("title_" + group + "_members");
+  }
+
+  define_body_id(group){
+      return('body_' + group + "_members");
   }
 
   define_body_class(group){
@@ -87,13 +124,13 @@ class MemberList extends React.Component {
 
                       <thead id={this.define_head_id(item.slug_name)}>
 
-                          <tr className={this.define_head_class(item.slug_name)} onClick={() => this.show_hide_list("body_absent_members")}>
+                          <tr className={this.define_head_class(item.slug_name)} onClick={() => this.show_hide_list(item.slug_name)}>
                               <th colSpan="5">{item.localized_name} ({item.results.length})</th>
                           </tr>
 
                       </thead>
 
-                        <tbody id="body_absent_members">
+                        <tbody id={this.define_body_id(item.slug_name)}>
 
                            {/* On boucle sur les joueurs du groupe */}
                            {item.results.map(result => (
@@ -103,7 +140,7 @@ class MemberList extends React.Component {
                                   <td>{result.profile.last_name}</td>
                                   <td>{item.results.length}</td>
                                   <td>{item.slug_name}</td>
-                                  <td>{this.show_logo_change_presence(result.profile, item.slug_name)}</td>
+                                  <td>{this.show_change_presence(result.profile, item.slug_name)}</td>
                               </tr>
                                ))}
                        </tbody>
@@ -126,7 +163,7 @@ class MemberList extends React.Component {
 
   render() {
 
-      {this.get_attendance_group()}
+    this.get_attendance_group();
 
     return (
       <div className="member_list">

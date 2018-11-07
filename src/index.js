@@ -60,17 +60,14 @@ class TableApp extends React.Component {
         //console.log(this.state.data.id);
     }
 
-    /*
+
     componentDidMount() {
       // Call this function each second
       this.get_api_data();
     }
-    */
+
 
   render() {
-
-      this.get_api_data();
-
       return (
           <div>
               {/*{this.show_members_list()}*/}
