@@ -3,7 +3,7 @@ import React from "react";
 class PastMemberList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { present_members: [], absent_members: [] };
+    this.state = { present_members: [], absent_members: []};
   }
 
   sorting_members(){
@@ -66,7 +66,7 @@ class PastMemberList extends React.Component {
             })
         })
         .then(response =>
-            console.log("update")
+            console.log("update"),
         )
   }
 
