@@ -51,7 +51,8 @@ th{
 }
 
 .present_members:hover, .available_members:hover, .rsvp_members:hover, .not_selected_members:hover,
-.absent_members:hover, .unavailable_members:hover, .waiting_list_members:hover, .played:hover, .not_played:hover,
+.absent_members:hover, .unavailable_members:hover, .waiting_list_members:hover, .played_members:hover,
+.not_played_members:hover,
 .participant:hover{
   background-color: #dddddd;
 }
@@ -120,8 +121,15 @@ th{
 
 /*Test transformation tableau en liste*/
 
+ul{
+  list-style: none outside none;
+}
+
 li{
-  plain: none;
+  float: left;
+  display: block;
+  width: 100px;
+  height: 40px;
 }
 
 

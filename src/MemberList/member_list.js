@@ -23,12 +23,12 @@ class MemberList extends React.Component {
     }
 
     // Show change_presence logo in the table
-    show_change_presence(profile){
+    show_change_presence(profile, group_slug_name){
 
         return(
             <span>
-                {this.state.attendance_group.map(group => (
-                <img className="logo_presence" src={this.get_group_image(group)} alt="yes" onClick={() => this.change_presence(profile.id, group)}/>
+                {this.state.attendance_group.map(logo_group => (
+                <img className="logo_presence" src={this.get_group_image(logo_group)} alt="yes" onClick={() => this.change_presence(profile.id, logo_group, group_slug_name)}/>
                 ))}
             </span>
         );
@@ -51,7 +51,8 @@ class MemberList extends React.Component {
     }
 
     // Call the API in order to change profile attendance
-    change_presence(profile_id, attendance){
+    // ID, logo group, row group
+    change_presence(profile_id, attendance_group, group_slug_name){
 
         this.setState({});
 
@@ -60,6 +61,8 @@ class MemberList extends React.Component {
         const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + this.props.team_id + '/events/'
         + event_id + '/profiles/' + profile_id + '/';
         const bearer = this.props.bearer;
+
+        const id = 'body_' + group_slug_name + "_member_" + profile_id;
 
         // Requête pour modifier le groupe
         // A la fin de la requête on recharge les données de l'API
@@ -70,11 +73,16 @@ class MemberList extends React.Component {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                "attendance_group": attendance,
+                "attendance_group": attendance_group,
             })
         })
         .then(response =>
-        this.get_api_data(),
+            this.get_api_data(),
+            console.log("update"),
+            document.getElementById("header_played_members").style.opacity = 0.5,
+        )
+        .then(response =>
+            document.getElementById("header_played_members").style.opacity = 1,
         )
     }
 
@@ -106,6 +114,10 @@ class MemberList extends React.Component {
         return('body_' + group + "_members");
     }
 
+    define_body_row_id(group, profile_id){
+        return('body_' + group + "_member_" + profile_id);
+    }
+
     define_body_class(group){
         return(group + "_members");
     }
@@ -118,28 +130,28 @@ class MemberList extends React.Component {
                 <table>
 
                     {/* On boucle sur chacun des groupes */}
-                    {this.state.data.attendees.map(item => (
-                    <div id="attendance_group">
-                        
-                        <thead id={this.define_head_id(item.slug_name)}>
+                    {this.state.data.attendees.map(group => (
+                    <div id={group.slug_name}>
 
-                            <tr className={this.define_head_class(item.slug_name)} onClick={() => this.show_hide_list(item.slug_name)}>
-                                <th colSpan="5">{item.localized_name} ({item.results.length})</th>
+                        <thead id={this.define_head_id(group.slug_name)}>
+
+                            <tr className={this.define_head_class(group.slug_name)} onClick={() => this.show_hide_list(group.slug_name)}>
+                                <th colSpan="5">{group.localized_name} ({group.results.length})</th>
                             </tr>
 
                         </thead>
 
-                        <tbody id={this.define_body_id(item.slug_name)}>
+                        <tbody id={this.define_body_id(group.slug_name)}>
 
                             {/* On boucle sur les joueurs du groupe */}
-                            {item.results.map(result => (
+                            {group.results.map(result => (
 
-                            <tr className={this.define_body_class(item.slug_name)} key={result.id} >
+                            <tr id={this.define_body_row_id(group.slug_name, result.profile.id)} className={this.define_body_class(group.slug_name)} key={result.profile.id} >
                                 <td>{result.profile.first_name}</td>
                                 <td>{result.profile.last_name}</td>
-                                <td>{item.results.length}</td>
-                                <td>{item.slug_name}</td>
-                                <td>{this.show_change_presence(result.profile, item.slug_name)}</td>
+                                <td>{group.results.length}</td>
+                                <td>{group.slug_name}</td>
+                                <td>{this.show_change_presence(result.profile, group.slug_name)}</td>
                             </tr>
                             ))}
                         </tbody>
