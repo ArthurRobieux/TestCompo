@@ -154,11 +154,11 @@ class MemberList extends React.Component {
         try {
             return (
                 // Table
-                <div id="member_list">
+                <ul id="member_list">
 
                     {/* On boucle sur chacun des groupes */}
                     {this.state.data.attendees.map(group => (
-                        <div id={group.slug_name}>
+                        <li className="attendance_group">
 
                             <div id={this.define_head_id(group.slug_name)}>
                                 <div className={this.define_head_class(group.slug_name)}
@@ -167,24 +167,24 @@ class MemberList extends React.Component {
                                 </div>
                             </div>
 
-                            <div id={this.define_body_id(group.slug_name)}>
+                            <ul id={this.define_body_id(group.slug_name)}>
                                 {/* On boucle sur les joueurs du groupe */}
                                 {group.results.map(result_profile => (
-                                    <ul id={this.define_body_row_id(group.slug_name, result_profile.profile.id)}
+                                    <li id={this.define_body_row_id(group.slug_name, result_profile.profile.id)}
                                         className={this.define_body_class(group.slug_name)}>
-                                        <li>{result_profile.profile.first_name}</li>
-                                        <li>{result_profile.profile.last_name}</li>
-                                        <li>{group.results.length}</li>
-                                        <li>{group.slug_name}</li>
-                                        <li>{this.show_change_presence(result_profile, group.slug_name)}</li>
-                                    </ul>
+                                        <div className="li_cell">{result_profile.profile.first_name}</div>
+                                        <div className="li_cell">{result_profile.profile.last_name}</div>
+                                        <div className="li_cell">{group.results.length}</div>
+                                        <div className="li_cell">{group.slug_name}</div>
+                                        <div className="li_cell">{this.show_change_presence(result_profile, group.slug_name)}</div>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
 
-                        </div>
+                        </li>
                     ))}
 
-                </div>
+                </ul>
 
             );
         }
