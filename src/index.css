@@ -29,7 +29,7 @@ div{
   padding: 20px 20px 20px 20px;
 }
 
-table{
+#member_list{
   margin-left:auto;
   margin-right: auto;
   border-collapse: collapse;
@@ -67,7 +67,7 @@ th{
 .title_participant_members {
   cursor: pointer;
   background-color: lightgreen;
-  height: 35px;
+  padding: 10px 0;
   transition-duration: 0.2s;
 }
 
@@ -79,7 +79,7 @@ th{
 .title_rsvp_members{
   cursor: pointer;
   background-color: lemonchiffon;
-  height: 35px;
+  padding: 10px 0;
   transition-duration: 0.2s;
 }
 
@@ -90,7 +90,7 @@ th{
 .title_absent_members, .title_not_selected_members, .title_unavailable_members, .title_not_played_members{
   cursor: pointer;
   background-color: darksalmon;
-  height: 35px;
+  padding: 10px 0;
   transition-duration: 0.2s;
 }
 
@@ -103,7 +103,9 @@ th{
 #body_available_members, #body_unavailable_members, #body_not_played_members, #body_played_members,
 #body_participant_members{
   display: table-row-group;
+  transition-duration: 1s;
 }
+
 
 
 .header_members{
@@ -117,21 +119,30 @@ th{
   cursor: pointer;
 }
 
-
-
-/*Test transformation tableau en liste*/
+/* Table in list */
 
 ul{
+  width: 560px;
+  height: 30px;
+  margin: 0;
   list-style: none outside none;
+  background-color: #ececec;
+}
+
+ul:hover{
+  background-color: #dddddd;
 }
 
 li{
+  vertical-align: middle;
+  display: table-cell;
   float: left;
-  display: block;
-  width: 100px;
-  height: 40px;
+  width: 90px;
+  padding:5px;
+  height: 0;
 }
 
 
+/* ---------- */
 
 
