@@ -3,7 +3,7 @@ import React from "react";
 class MemberList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {attendance_group: [], data: {}}
+        this.state = {attendance_group: [], data: {}, notifications_list: []}
     }
 
     // Get attendance groups in state.data
@@ -74,8 +74,11 @@ class MemberList extends React.Component {
                 "attendance_group": new_group,
             })
         })
+
         .then(response =>
-            console.log("update done")
+            console.log(result_profile.profile.first_name + " update done."),
+            this.state.notifications_list.push(result_profile.profile.first_name + " "
+                + result_profile.profile.last_name + " update done."),
         );
 
         // OnClick, to avoid loading, profile is moved from group list to new group list
@@ -90,6 +93,24 @@ class MemberList extends React.Component {
         // Add profile to the new group and delete from the previous
         this.state.data.attendees[previous_group_pos].results.splice(profile_pos, 1);
         this.state.data.attendees[new_group_pos].results.push(result_profile);
+    }
+
+    show_notifications_list() {
+        return(
+            <div id="notifications_list">
+                {this.state.notifications_list.map(notification => (
+                    this.show_notification(notification)
+                ))}
+            </div>
+        );
+    }
+
+    show_notification(notification) {
+        return(
+            <div class="notification">
+                {notification}<br/>
+            </div>
+        );
     }
 
     // Show or hide body of a group
@@ -183,12 +204,12 @@ class MemberList extends React.Component {
                 "Content-Type": "application/json",
             }
         })
-            .then(response =>
-                response.json()
-            )
-            .then(json_response =>
-                this.setState({data: json_response}),
-            );
+        .then(response =>
+            response.json()
+        )
+        .then(json_response =>
+            this.setState({data: json_response}),
+        );
         console.log(this.state.data);
     }
 
@@ -206,6 +227,7 @@ class MemberList extends React.Component {
             <div className="member_list">
                 <h3>Table with API data (id={this.state.data.id})</h3>
                 {this.show_table()}
+                {this.show_notifications_list()}
             </div>
         );
     }

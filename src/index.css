@@ -73,7 +73,7 @@ th{
 
 .title_present_members:hover, .title_available_members:hover, .title_waiting_list_members:hover,
 .title_played_members:hover, .title_participant_members:hover{
-  background-color: green;
+  background-color: #8ad878;
 }
 
 .title_rsvp_members{
@@ -84,7 +84,7 @@ th{
 }
 
 .title_rsvp_members:hover{
-  background-color: yellow;
+  background-color: #e4f48b;
 }
 
 .title_absent_members, .title_not_selected_members, .title_unavailable_members, .title_not_played_members{
@@ -96,7 +96,7 @@ th{
 
 .title_absent_members:hover, .title_not_selected_members:hover, .title_unavailable_members:hover,
 .title_not_played_members:hover{
-  background-color: red;
+  background-color: #df7272;
 }
 
 #body_present_members, #body_absent_members, #body_rsvp_members, #body_not_selected_members, #body_waiting_list_members,
@@ -145,4 +145,20 @@ li{
 
 /* ---------- */
 
+#notifications_list{
+  padding: 10px;
+  position : fixed;
+  top : 0;
+  right : 0;
+}
 
+.notification{
+  padding:5px;
+  margin: 2px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #ececec;
+}
