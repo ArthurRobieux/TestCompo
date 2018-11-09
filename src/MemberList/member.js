@@ -1,5 +1,7 @@
 import React from "react";
 
+import Profile from './profile.js';
+
 class Member extends React.Component {
     constructor(props) {
         super(props);
@@ -89,8 +91,7 @@ class Member extends React.Component {
         return (
             <li id={this.define_body_row_id(this.props.group.slug_name, this.props.result_profile.profile.id)}
                 className={this.define_body_class(this.props.group.slug_name)}>
-                <div className="li_cell">{this.props.result_profile.profile.first_name}</div>
-                <div className="li_cell">{this.props.result_profile.profile.last_name}</div>
+                <Profile profile={this.props.result_profile.profile}/>
                 <div className="li_cell">{this.props.group.results.length}</div>
                 <div className="li_cell">{this.props.group.slug_name}</div>
                 <div className="li_cell">{this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}</div>

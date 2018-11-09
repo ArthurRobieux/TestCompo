@@ -35,8 +35,7 @@ class Group extends React.Component {
         if(group_name === 'available' || group_name === 'participant' || group_name === 'played'){
             return(
                 <li className="members_header">
-                    <div className="li_cell">Name</div>
-                    <div className="li_cell">Last</div>
+                    <div className="li_cell_profile">Profile</div>
                     <div className="li_cell">Nb</div>
                     <div className="li_cell">Group</div>
                     <div className="li_cell">Pres</div>
