@@ -9,19 +9,9 @@ h1, h3{
 div{
 }
 
-.button{
-  height:50px;
-  weight:300px;
-}
-
-.text_area{
-  width: 100px;
-  height: 2px;
-}
-
 .member_list{
   text-align: center;
-  width: 50%;
+  width: 40%;
   margin-left:auto;
   margin-right: auto;
   color: black;
@@ -34,7 +24,13 @@ div{
   margin-right: auto;
   border-collapse: collapse;
   border: 1px solid black;
-  width: 600px;
+  width: 100%;
+}
+
+@media screen and (max-width: 560px) {
+  .member_list {
+    width: 90%;
+  }
 }
 
 td{
@@ -105,11 +101,10 @@ th{
 #body_present_members, #body_absent_members, #body_rsvp_members, #body_not_selected_members, #body_waiting_list_members,
 #body_available_members, #body_unavailable_members, #body_not_played_members, #body_played_members,
 #body_participant_members{
-  display: table-row-group;
+  display: block;
   transition-duration: 1s;
+  width: 100%;
 }
-
-
 
 .header_members{
   background-color: darkgrey;
@@ -122,14 +117,12 @@ th{
   cursor: pointer;
 }
 
-/* Table in list */
-
 ul{
   padding-inline-start: 0;
 }
 
 li{
-  width: 600px;
+  width: 100%;
   height: 30px;
   margin: 0;
   list-style: none outside none;
@@ -145,7 +138,7 @@ li:hover{
   vertical-align: middle;
   display: table-cell;
   float: left;
-  width: 110px;
+  width: 18%;
   padding:5px;
   height: 0;
 }
@@ -153,9 +146,6 @@ li:hover{
 .attendance_group{
   height: auto;
 }
-
-
-/* ---------- */
 
 #notifications_list{
   padding: 10px;

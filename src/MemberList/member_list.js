@@ -1,5 +1,8 @@
 import React from "react";
 
+import Member from './member.js';
+import Group from './group.js';
+
 class MemberList extends React.Component {
     constructor(props) {
         super(props);
@@ -23,8 +26,96 @@ class MemberList extends React.Component {
         //console.log(this.state.data);
     }
 
+    // Show and create the table
+    show_table() {
+        try {
+            return (
+                // Table
+                <ul id="member_list">
+                    {/* Loop on each groups */}
+                    {this.state.data.attendees.map(group => (
+                        this.show_group(group)
+                        // <Group group={group}/>
+                    ))}
+                </ul>
+            );
+        }
+        catch (error) {
+            console.error('No data for the table');
+            return ("Loading..")
+        }
+    }
+
+    // Show a group in the table
+    show_group(group){
+    /*  if(group.slug_name==="available"){
+            return(
+                <li className="attendance_group">
+                    <div id={this.define_head_id(group.slug_name)}>
+                        <div className={this.define_head_class(group.slug_name)}
+                             onClick={() => this.show_hide_list(group.slug_name)}>
+                            {group.localized_name} ({group.results.length})
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li id="header_categories">
+                            <div className="li_cell">First</div>
+                            <div className="li_cell">Last</div>
+                            <div className="li_cell">Nb</div>
+                            <div className="li_cell">Group</div>
+                            <div className="li_cell">Attendance</div>
+                        </li>
+                    </ul>
+
+                    <ul id={this.define_body_id(group.slug_name)}>
+                        {/!* Loop on each members of the group *!/}
+                        {group.results.map(result_profile => (
+                            this.show_member(group, result_profile)
+                        ))}
+                    </ul>
+                </li>
+            );
+        }
+        else {*/
+        return (
+            <li className="attendance_group">
+
+                <div id={this.define_head_id(group.slug_name)}>
+                    <div className={this.define_head_class(group.slug_name)}
+                         onClick={() => this.show_hide_list(group.slug_name)}>
+                        {group.localized_name} ({group.results.length})
+                    </div>
+                </div>
+
+                <ul id={this.define_body_id(group.slug_name)}>
+                    {/* Loop on each members of the group */}
+                    {group.results.map(result_profile => (
+                        this.show_member(group, result_profile)
+                    ))}
+                </ul>
+
+            </li>
+        );
+        //}
+    }
+
+    // Show a member in a group
+    show_member(group, result_profile){
+        return(
+            <li id={this.define_body_row_id(group.slug_name, result_profile.profile.id)}
+                className={this.define_body_class(group.slug_name)}>
+                <div className="li_cell">{result_profile.profile.first_name}</div>
+                <div className="li_cell">{result_profile.profile.last_name}</div>
+                <div className="li_cell">{group.results.length}</div>
+                <div className="li_cell">{group.slug_name}</div>
+                <div className="li_cell">{this.show_change_presence_logo(result_profile, group.slug_name)}</div>
+            </li>
+        );
+    }
+
     // Show change_presence logo in the table
-    show_change_presence(result_profile, group_slug_name) {
+    show_change_presence_logo(result_profile, group_slug_name) {
 
         return (
             <span>
@@ -120,7 +211,7 @@ class MemberList extends React.Component {
         const id = 'body_' + group_slug_name + '_members';
 
         if (document.getElementById(id).style.display === 'none') {
-            document.getElementById(id).style.display = 'table-row-group';
+            document.getElementById(id).style.display = 'block';
         }
         else {
             document.getElementById(id).style.display = 'none';
@@ -147,52 +238,6 @@ class MemberList extends React.Component {
 
     define_body_class(group) {
         return (group + "_members");
-    }
-
-    // Show and create the table
-    show_table() {
-        try {
-            return (
-                // Table
-                <ul id="member_list">
-
-                    {/* On boucle sur chacun des groupes */}
-                    {this.state.data.attendees.map(group => (
-                        <li className="attendance_group">
-
-                            <div id={this.define_head_id(group.slug_name)}>
-                                <div className={this.define_head_class(group.slug_name)}
-                                     onClick={() => this.show_hide_list(group.slug_name)}>
-                                    {group.localized_name} ({group.results.length})
-                                </div>
-                            </div>
-
-                            <ul id={this.define_body_id(group.slug_name)}>
-                                {/* On boucle sur les joueurs du groupe */}
-                                {group.results.map(result_profile => (
-                                    <li id={this.define_body_row_id(group.slug_name, result_profile.profile.id)}
-                                        className={this.define_body_class(group.slug_name)}>
-                                        <div className="li_cell">{result_profile.profile.first_name}</div>
-                                        <div className="li_cell">{result_profile.profile.last_name}</div>
-                                        <div className="li_cell">{group.results.length}</div>
-                                        <div className="li_cell">{group.slug_name}</div>
-                                        <div className="li_cell">{this.show_change_presence(result_profile, group.slug_name)}</div>
-                                    </li>
-                                ))}
-                            </ul>
-
-                        </li>
-                    ))}
-
-                </ul>
-
-            );
-        }
-        catch (error) {
-            console.error('No data for the table');
-            return ("Loading..")
-        }
-
     }
 
     //Get data from API and stock them in state.data
