@@ -11,7 +11,7 @@ class Member extends React.Component {
     show_change_presence_logo(result_profile, group_slug_name) {
 
         return (
-            <span>
+            <span className={"logo_group"}>
                 {this.props.member_list.state.attendance_group.map(logo_group_slug_name => (
                     <img className="logo_presence" src={this.get_group_image(logo_group_slug_name)} alt="yes"
                          onClick={() => this.change_presence(result_profile, logo_group_slug_name, group_slug_name)}/>

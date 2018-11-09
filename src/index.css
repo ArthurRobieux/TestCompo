@@ -170,3 +170,13 @@ li:hover{
   margin-left: auto;
   background-color: #ececec;
 }
+
+.logo_group{
+  top : 20px;
+  right : 10px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
