@@ -106,9 +106,12 @@ th{
   width: 100%;
 }
 
-.header_members{
+.members_header{
   background-color: darkgrey;
-  border: 1px solid black;
+}
+
+.members_header:hover{
+  background-color: darkgrey;
 }
 
 .logo_presence{

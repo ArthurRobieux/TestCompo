@@ -30,6 +30,21 @@ class Group extends React.Component {
         }
     }
 
+    show_members_header(){
+        const group_name = this.props.group.slug_name;
+        if(group_name === 'available' || group_name === 'participant' || group_name === 'played'){
+            return(
+                <li className="members_header">
+                    <div className="li_cell">Name</div>
+                    <div className="li_cell">Last</div>
+                    <div className="li_cell">Nb</div>
+                    <div className="li_cell">Group</div>
+                    <div className="li_cell">Pres</div>
+                </li>
+            );
+        }
+    }
+
     // Render Table
     render() {
 
@@ -42,6 +57,8 @@ class Group extends React.Component {
                         {this.props.group.localized_name} ({this.props.group.results.length})
                     </div>
                 </div>
+
+                {this.show_members_header()}
 
                 <ul id={this.define_body_id(this.props.group.slug_name)}>
                     {/* Loop on each members of the group */}
