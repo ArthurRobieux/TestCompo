@@ -96,7 +96,7 @@ class MemberList extends React.Component {
         this.get_attendance_group();
 
         return (
-            <div className="member_list">
+            <div>
                 <h3>Table with API data (id={this.state.data.id})</h3>
                 {this.show_table()}
                 {this.show_notifications_list()}

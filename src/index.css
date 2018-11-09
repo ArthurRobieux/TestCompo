@@ -9,9 +9,9 @@ h1, h3{
 div{
 }
 
-.member_list{
+#global_content{
   text-align: center;
-  width: 40%;
+  width: 50%;
   margin-left:auto;
   margin-right: auto;
   color: black;
@@ -28,22 +28,14 @@ div{
 }
 
 @media screen and (max-width: 560px) {
-  .member_list {
+  #global_content {
     width: 90%;
   }
 }
 
-td{
-  width: 120px;
-  text-align: center;
-  color:black;
+.compo{
+  width: 100%;
   padding: 5px;
-  border: 1px solid black;
-  margin: 0px;
-}
-
-th{
-  width: 600px;
 }
 
 .present_members:hover, .available_members:hover, .rsvp_members:hover, .not_selected_members:hover,
