@@ -5,6 +5,7 @@ import Profile from './profile.js';
 class Member extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {chores: {}};
     }
 
     // Show change_presence logo in the table
@@ -23,16 +24,16 @@ class Member extends React.Component {
     // Get the right image for each group
     get_group_image(group) {
         if (group === 'played' || group === 'available' || group === 'present' || group === 'waiting_list' || group === 'participant') {
-            return ("Yes.png")
+            return ("Images/Yes.png")
         }
         else if (group === 'rsvp') {
-            return ("Waiting.png")
+            return ("Images/Waiting.png")
         }
         else if (group === 'not_selected') {
-            return ("Not_Selected.png")
+            return ("Images/Not_Selected.png")
         }
         else {
-            return ("No.png")
+            return ("Images/No.png")
         }
     }
 
@@ -40,7 +41,7 @@ class Member extends React.Component {
     change_presence(result_profile, new_group, previous_group) {
 
         this.props.member_list.setState({});
-        
+
         const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + this.props.member_list.props.team_id + '/events/'
             + this.props.member_list.props.event_id + '/profiles/' + result_profile.profile.id + '/';
         const bearer = this.props.member_list.props.bearer;
@@ -85,6 +86,57 @@ class Member extends React.Component {
         return (group + "_members");
     }
 
+
+
+    get_profile_chores(profile_id){
+
+
+        const chores = [];
+
+        // Pour chaque tache
+        for(var i=0; i<this.props.member_list.state.data.chores.length; i++){
+
+            // Si les taches sont assignées au player
+            if(this.props.member_list.state.data.chores[i].profile.id === profile_id){
+
+                // Pour chacune de ses tâches
+                for(var j=0; j<this.props.member_list.state.data.chores[i].chores.length; j++){
+
+                    //console.log(this.props.member_list.state.data.chores[i].chores[j]);
+                    chores.push(this.props.member_list.state.data.chores[i].chores[j].icon_name);
+
+
+                }
+
+            }
+        }
+
+        console.log(profile_id);
+        console.log(chores);
+
+        if(chores.length === 0){
+            return(<div className="li_cell"></div>)
+        }
+        else if(chores.length === 1){
+            return(
+                <div className="li_cell">
+                    <img className="icon_task" src="Images/icons_tasks/icon-ball_football.svg" alt="icon-task"/>
+                </div>)
+        }
+        else{
+            return(
+            <div className="li_cell"> <
+                img className="icon_task" src="Images/icons_tasks/icon_box.svg" alt="icon-task"/>
+                {chores.length}
+            </div>)
+        }
+
+    }
+
+
+
+
+
     // Render Table
     render() {
 
@@ -92,7 +144,9 @@ class Member extends React.Component {
             <li id={this.define_body_row_id(this.props.group.slug_name, this.props.result_profile.profile.id)}
                 className={this.define_body_class(this.props.group.slug_name)}>
                 <Profile profile={this.props.result_profile.profile}/>
-                <div className="li_cell">{this.props.group.results.length}</div>
+
+                {this.get_profile_chores(this.props.result_profile.profile.id)}
+
                 <div className="li_cell">{this.props.group.slug_name}</div>
                 <div className="li_cell">{this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}</div>
             </li>

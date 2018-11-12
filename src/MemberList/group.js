@@ -36,7 +36,7 @@ class Group extends React.Component {
             return(
                 <li className="members_header">
                     <div className="li_cell_profile">Profile</div>
-                    <div className="li_cell">Nb</div>
+                    <div className="li_cell">Chores</div>
                     <div className="li_cell">Group</div>
                     <div className="li_cell">Pres</div>
                 </li>

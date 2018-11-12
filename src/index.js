@@ -7,7 +7,7 @@ import MemberList from './MemberList/member_list.js';
 // Constants
 
 const team_id = 6;
-const event_id = 132;    //132 = future, 131 = future with treshold, 74 = past
+const event_id = 131;    //132 = future, 131 = future with treshold, 74 = past
 const bearer = "Bearer b15dfb6dee52b68d5eafe5602ddc79afabf2717a";
 
 // App
@@ -35,7 +35,7 @@ class TableApp extends React.Component {
             return(
                 <div>
                     <h3>Compo</h3>
-                    <img className="compo" src="Compo.png" alt="compo"/>
+                    <img className="compo" src="Images/Compo.png" alt="compo"/>
                 </div>
             );
         }
