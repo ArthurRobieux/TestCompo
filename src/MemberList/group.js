@@ -37,8 +37,8 @@ class Group extends React.Component {
             return(
                 <li className="members_header">
                     <div className="li_cell_profile">Profile</div>
-                    <div className="li_cell">Chores</div>
-                    <div className="li_cell">Pres</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Chores</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Pres</div>
                 </li>
             );
         }
@@ -47,16 +47,28 @@ class Group extends React.Component {
             return(
                 <li className="members_header">
                     <div className="li_cell_profile">Profile</div>
-                    <div className="li_cell">Chores</div>
-                    <div className="li_cell">Stats</div>
-                    <div className="li_cell">Pres</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Chores</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Stats</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Pres</div>
                 </li>
             );
         }
     }
 
+    get_li_cell_class(){
+        console.log(this.props.member_list.state.li_cell_class);
+        if(this.props.member_list.state.data.is_past){
+            this.props.member_list.state.li_cell_class = 'li_cell_past';
+        }
+        else{
+            this.props.member_list.state.li_cell_class = 'li_cell_future';
+        }
+    }
+
     // Render Table
     render() {
+
+        this.get_li_cell_class();
 
         return (
             <li className="attendance_group">

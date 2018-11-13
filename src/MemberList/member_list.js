@@ -5,7 +5,7 @@ import Group from './group.js';
 class MemberList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {attendance_group: [], data: {}, notifications_list: []}
+        this.state = {attendance_group: [], data: {}, notifications_list: [], li_cell_class:''}
     }
 
     // Get attendance groups in state.data

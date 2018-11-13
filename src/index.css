@@ -114,8 +114,34 @@ li:hover{
 }
 
 .li_cell{
+  white-space: nowrap;
+  text-overflow: ellipsis;
   vertical-align: middle;
-  display: table-cell;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  width: 20%;
+  padding:5px 0 5px 0;
+  height: 0;
+}
+
+.li_cell_future{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  width: 30%;
+  padding:5px 0 5px 0;
+  height: 0;
+}
+
+.li_cell_past{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  display: inline-block;
   float: left;
   text-align: center;
   width: 20%;
@@ -124,6 +150,8 @@ li:hover{
 }
 
 .li_cell_profile{
+  white-space: nowrap;
+  text-overflow: ellipsis;
   vertical-align: middle;
   display: table-cell;
   float: left;
@@ -181,10 +209,10 @@ a{
   background-color: #243e68;
   border: 1px solid black;
   border-radius: 10px;
-  text-align: center;
-  display:none;
-  opacity: 0.75;
   text-align: left;
+  font-size: 14px;
+  display:none;
+  opacity: 0.9;
   padding: 5px;
 }
 
@@ -194,15 +222,15 @@ a{
 
 .icon_delete_chore{
   padding: 0 10px 0 0;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   cursor: pointer;
 }
 
 .logo_group{
   top : -28px;
   display: none;
-  opacity: 0.75;
+  opacity: 0.9;
   position: relative;
   border-radius: 10px;
   background-color: #243e68;

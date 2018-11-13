@@ -12,7 +12,7 @@ class Member extends React.Component {
     show_change_presence_logo(result_profile, group_slug_name) {
 
         return (
-            <span>
+            <div className={this.props.member_list.state.li_cell_class}>
 
                 <div id={"show_logo_group"}>
                     <img className={"logo_presence"} src={"Images/Plus.png"} alt={"show_logo_group"} />
@@ -25,7 +25,7 @@ class Member extends React.Component {
                     ))}
                 </span>
 
-            </span>
+            </div>
         );
     }
 
@@ -119,14 +119,14 @@ class Member extends React.Component {
         // No chore
         if(chores.length === 0){
             return(
-                <div id="chores_icons" className="li_cell">
+                <div id="chores_icons" className={this.props.member_list.state.li_cell_class}>
                 </div>)
         }
 
         // One chore
         else if(chores.length === 1){
             return(
-                <div id="chores_icons" className="li_cell">
+                <div id="chores_icons" className={this.props.member_list.state.li_cell_class}>
 
                     <img className="icon_task" src={this.create_chore_icon_name(chores[0].icon_name)} alt="icon-task"/>
 
@@ -142,7 +142,7 @@ class Member extends React.Component {
         // > 1 chores
         else{
             return(
-            <div id="chores_icons" className="li_cell">
+            <div id="chores_icons" className={this.props.member_list.state.li_cell_class}>
 
                 <img className="icon_task" src="Images/icons_tasks/icon_box.svg" alt="icon-task"/>
                 {chores.length}
@@ -200,7 +200,7 @@ class Member extends React.Component {
     show_past_stats(){
         if(this.props.member_list.state.data.is_past) {
             return (
-                <div className="li_cell">
+                <div className={this.props.member_list.state.li_cell_class}>
                     -
                 </div>
             );
@@ -223,7 +223,7 @@ class Member extends React.Component {
                 {/*Stats*/}
                 {this.show_past_stats()}
                 {/*Other*/}
-                <div className="li_cell">{this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}</div>
+                {this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}
 
             </li>
         );
