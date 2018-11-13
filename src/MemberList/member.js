@@ -124,7 +124,7 @@ class Member extends React.Component {
 
                     <div className="chore_name">
                         <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
-                             onClick={() => this.desassign_chore(chores[0], profile_id)}/>
+                             onClick={() => this.unassign_chore(chores[0], profile_id)}/>
                         {chores[0].name}
                     </div>
 
@@ -141,16 +141,9 @@ class Member extends React.Component {
 
                 <div className="chore_name">
 
-
-                    <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
-                         onClick={() => this.desassign_chore(chores[0], profile_id)}/>
-                    {chores[0].name}
-                    <br/>
-                    <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
-                         onClick={() => this.desassign_chore(chores[1], profile_id)}/>
-                    {chores[1].name}
-
-
+                    {chores.map(chore => (
+                        this.add_chore_name(chore, profile_id)
+                    ))}
 
                 </div>
             </div>)
@@ -162,8 +155,19 @@ class Member extends React.Component {
         return("Images/icons_tasks/" + icon_name + ".svg");
     }
 
+    add_chore_name(chore, profile_id){
+        return(
+            <span>
+                <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
+                     onClick={() => this.unassign_chore(chore, profile_id)}/>
+                {chore.name}
+                <br/>
+            </span>
+        );
+    }
 
-    desassign_chore(chore, profile_id){
+
+    unassign_chore(chore, profile_id){
 
         this.props.member_list.setState({});
 
