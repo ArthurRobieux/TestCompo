@@ -2,6 +2,7 @@ import React from "react";
 
 import Profile from './profile.js';
 import Chores from './chores.js';
+import Stats from './stats.js';
 
 class Member extends React.Component {
     constructor(props) {
@@ -94,25 +95,6 @@ class Member extends React.Component {
         return (group + "_members");
     }
 
-    show_past_stats(){
-        if(this.props.member_list.state.data.is_past) {
-            return (
-                <span className={"stats"}>
-                    {/*Stats Buts */}
-                    <div className={this.props.member_list.state.li_cell_class}>
-                        B
-                    </div>
-                    {/*Stats Passe*/}
-                    <div className={this.props.member_list.state.li_cell_class}>
-                        P
-                    </div>
-                </span>
-            );
-        }
-    }
-
-
-
     // Render Table
     render() {
 
@@ -125,7 +107,7 @@ class Member extends React.Component {
                 {/*Chores*/}
                 <Chores member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Stats*/}
-                {this.show_past_stats()}
+                <Stats member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Other*/}
                 {this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}
 
