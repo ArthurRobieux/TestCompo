@@ -181,6 +181,10 @@ a{
   text-decoration: none;
 }
 
+.avatar{
+  border-radius: 100px;
+}
+
 /* Chores */
 
 .icon_task{
