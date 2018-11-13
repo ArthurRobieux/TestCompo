@@ -9,6 +9,7 @@ class Profile extends React.Component {
                     <span><img src={this.props.profile.avatar["small"]} alt="avatar"/></span>
                     <span> {this.props.profile.first_name} </span>
                     <span>{this.props.profile.last_name} </span>
+                    <span>{this.props.profile.id} </span>
                 </a>
             </div>
         );

@@ -57,7 +57,6 @@ class Member extends React.Component {
                 "attendance_group": new_group,
             })
         })
-
         .then(response =>
             console.log(result_profile.profile.first_name + " update done."),
             this.props.member_list.state.notifications_list.push(result_profile.profile.first_name + " "
@@ -87,53 +86,104 @@ class Member extends React.Component {
     }
 
 
-
+    // Get profiles chores
     get_profile_chores(profile_id){
-
 
         const chores = [];
 
-        // Pour chaque tache
+        // For each chores
         for(var i=0; i<this.props.member_list.state.data.chores.length; i++){
 
-            // Si les taches sont assignées au player
+            // If the player has this chore
             if(this.props.member_list.state.data.chores[i].profile.id === profile_id){
 
-                // Pour chacune de ses tâches
+                // For each profile chore
                 for(var j=0; j<this.props.member_list.state.data.chores[i].chores.length; j++){
 
                     //console.log(this.props.member_list.state.data.chores[i].chores[j]);
-                    chores.push(this.props.member_list.state.data.chores[i].chores[j].icon_name);
-
-
+                    chores.push(this.props.member_list.state.data.chores[i].chores[j]);
                 }
-
             }
         }
 
-        console.log(profile_id);
-        console.log(chores);
+        // Show chores in a column
 
+        // No chore
         if(chores.length === 0){
-            return(<div className="li_cell"></div>)
-        }
-        else if(chores.length === 1){
             return(
-                <div className="li_cell">
-                    <img className="icon_task" src="Images/icons_tasks/icon-ball_football.svg" alt="icon-task"/>
+                <div className="li_cell" id="chores_icons">
                 </div>)
         }
+
+        // One chore
+        else if(chores.length === 1){
+            return(
+                <div className="li_cell" id="chores_icons">
+
+                    <img className="icon_task" src={this.create_chore_icon_name(chores[0].icon_name)} alt="icon-task"/>
+
+                    <div className="chore_name">
+                        <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
+                             onClick={() => this.desassign_chore(chores[0], profile_id)}/>
+                        {chores[0].name}
+                    </div>
+
+                </div>)
+        }
+
+        // > 1 chores
         else{
             return(
-            <div className="li_cell"> <
-                img className="icon_task" src="Images/icons_tasks/icon_box.svg" alt="icon-task"/>
+            <div className="li_cell" id="chores_icons">
+
+                <img className="icon_task" src="Images/icons_tasks/icon_box.svg" alt="icon-task"/>
                 {chores.length}
+
+                <div className="chore_name">
+
+
+                    <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
+                         onClick={() => this.desassign_chore(chores[0], profile_id)}/>
+                    {chores[0].name}
+                    <br/>
+                    <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
+                         onClick={() => this.desassign_chore(chores[1], profile_id)}/>
+                    {chores[1].name}
+
+
+
+                </div>
             </div>)
         }
 
     }
 
+    create_chore_icon_name(icon_name){
+        return("Images/icons_tasks/" + icon_name + ".svg");
+    }
 
+
+    desassign_chore(chore, profile_id){
+
+        this.props.member_list.setState({});
+
+        const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + this.props.member_list.props.team_id + '/events/'
+            + this.props.member_list.props.event_id + '/chores/' + profile_id + '/' + chore.id + '/';
+        const bearer = this.props.member_list.props.bearer;
+
+        // Request to change attendance
+        fetch(API_URL, {
+            method: "DELETE",
+            headers: {
+                "Authorization": bearer,
+                "Content-Type": "application/json",
+            },
+        })
+        .then(response =>
+            console.log("Chore " + chore.name + " (" + chore.id + ") deleted of player " + profile_id + "."),
+            this.props.member_list.get_api_data(),
+        );
+    }
 
 
 
@@ -143,12 +193,16 @@ class Member extends React.Component {
         return (
             <li id={this.define_body_row_id(this.props.group.slug_name, this.props.result_profile.profile.id)}
                 className={this.define_body_class(this.props.group.slug_name)}>
+
+                {/*Profile*/}
                 <Profile profile={this.props.result_profile.profile}/>
-
+                {/*Chores*/}
                 {this.get_profile_chores(this.props.result_profile.profile.id)}
-
+                {/*Group Name*/}
                 <div className="li_cell">{this.props.group.slug_name}</div>
+                {/*Other*/}
                 <div className="li_cell">{this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}</div>
+
             </li>
         );
     }

@@ -181,7 +181,32 @@ a{
   text-decoration: none;
 }
 
+/* Chores */
+
 .icon_task{
   width: 20px;
   height: 20px;
+}
+
+.chore_name{
+  position: relative;
+  color: white;
+  top: -5px;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  display:none;
+}
+
+.icon_task:hover + .chore_name, .chore_name:hover{
+  display: block;
+  opacity: 0.75;
+}
+
+.icon_delete_chore{
+  padding: 0 10px 0 0;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
 }
