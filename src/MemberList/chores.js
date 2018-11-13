@@ -10,16 +10,16 @@ class Chores extends React.Component {
         const chores = [];
 
         // For each chores
-        for(var i=0; i<this.props.member_list.state.data.chores.length; i++){
+        for(var i=0; i<this.props.member_list.state.event_data.chores.length; i++){
 
             // If the player has this chore
-            if(this.props.member_list.state.data.chores[i].profile.id === profile_id){
+            if(this.props.member_list.state.event_data.chores[i].profile.id === profile_id){
 
                 // For each profile chore
-                for(var j=0; j<this.props.member_list.state.data.chores[i].chores.length; j++){
+                for(var j=0; j<this.props.member_list.state.event_data.chores[i].chores.length; j++){
 
-                    //console.log(this.props.member_list.state.data.chores[i].chores[j]);
-                    chores.push(this.props.member_list.state.data.chores[i].chores[j]);
+                    //console.log(this.props.member_list.state.event_data.chores[i].chores[j]);
+                    chores.push(this.props.member_list.state.event_data.chores[i].chores[j]);
                 }
             }
         }
@@ -103,7 +103,7 @@ class Chores extends React.Component {
         })
         .then(response =>
             console.log("Chore " + chore.name + " (" + chore.id + ") deleted of player " + profile_id + "."),
-            this.props.member_list.get_api_data(),
+            this.props.member_list.get_api_event_data(),
         );
     }
 

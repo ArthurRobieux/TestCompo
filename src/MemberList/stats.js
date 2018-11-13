@@ -4,7 +4,7 @@ class Stats extends React.Component {
 
 
     show_past_stats(){
-        if(this.props.member_list.state.data.is_past) {
+        if(this.props.member_list.state.event_data.is_past) {
             return (
                 <span className={"list_stats"}>
                     {/*Stats Buts */}

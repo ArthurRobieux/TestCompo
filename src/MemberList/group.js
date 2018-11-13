@@ -58,7 +58,7 @@ class Group extends React.Component {
 
     // Define class of cells in the table
     define_li_cell_class(){
-        if(this.props.member_list.state.data.is_past){
+        if(this.props.member_list.state.event_data.is_past){
             this.props.member_list.state.li_cell_class = 'li_cell_past';
         }
         else{

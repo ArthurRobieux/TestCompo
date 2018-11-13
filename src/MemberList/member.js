@@ -80,11 +80,11 @@ class Member extends React.Component {
         const previous_group_pos = this.props.member_list.state.attendance_group.indexOf(previous_group);
 
         // Get the profile position in the previous group
-        const profile_pos = this.props.member_list.state.data.attendees[previous_group_pos].results.indexOf(result_profile);
+        const profile_pos = this.props.member_list.state.event_data.attendees[previous_group_pos].results.indexOf(result_profile);
 
         // Add profile to the new group and delete from the previous
-        this.props.member_list.state.data.attendees[previous_group_pos].results.splice(profile_pos, 1);
-        this.props.member_list.state.data.attendees[new_group_pos].results.push(result_profile);
+        this.props.member_list.state.event_data.attendees[previous_group_pos].results.splice(profile_pos, 1);
+        this.props.member_list.state.event_data.attendees[new_group_pos].results.push(result_profile);
     }
 
     define_body_row_id(group, profile_id) {
