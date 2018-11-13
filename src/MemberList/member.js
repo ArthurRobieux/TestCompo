@@ -200,9 +200,16 @@ class Member extends React.Component {
     show_past_stats(){
         if(this.props.member_list.state.data.is_past) {
             return (
-                <div className={this.props.member_list.state.li_cell_class}>
-                    -
-                </div>
+                <span>
+                    {/*Stats Buts */}
+                    <div className={this.props.member_list.state.li_cell_class}>
+                        B
+                    </div>
+                    {/*Stats Passe*/}
+                    <div className={this.props.member_list.state.li_cell_class}>
+                        P
+                    </div>
+                </span>
             );
         }
     }

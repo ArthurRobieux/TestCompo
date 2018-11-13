@@ -35,29 +35,29 @@ class Group extends React.Component {
         // Future event
         if(group_name === 'available' || group_name === 'participant'){
             return(
-                <li className="members_header">
+                <div className="members_header">
                     <div className="li_cell_profile">Profile</div>
                     <div className={this.props.member_list.state.li_cell_class}>Chores</div>
                     <div className={this.props.member_list.state.li_cell_class}>Pres</div>
-                </li>
+                </div>
             );
         }
         // Past event
         else if(group_name === 'played'){
             return(
-                <li className="members_header">
+                <div className="members_header">
                     <div className="li_cell_profile">Profile</div>
                     <div className={this.props.member_list.state.li_cell_class}>Chores</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Stats</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Buts</div>
+                    <div className={this.props.member_list.state.li_cell_class}>PD</div>
                     <div className={this.props.member_list.state.li_cell_class}>Pres</div>
-                </li>
+                </div>
             );
         }
     }
 
     // Define class of cells in the table
     define_li_cell_class(){
-        console.log(this.props.member_list.state.li_cell_class);
         if(this.props.member_list.state.data.is_past){
             this.props.member_list.state.li_cell_class = 'li_cell_past';
         }
