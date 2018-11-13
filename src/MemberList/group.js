@@ -55,7 +55,8 @@ class Group extends React.Component {
         }
     }
 
-    get_li_cell_class(){
+    // Define class of cells in the table
+    define_li_cell_class(){
         console.log(this.props.member_list.state.li_cell_class);
         if(this.props.member_list.state.data.is_past){
             this.props.member_list.state.li_cell_class = 'li_cell_past';
@@ -68,7 +69,7 @@ class Group extends React.Component {
     // Render Table
     render() {
 
-        this.get_li_cell_class();
+        this.define_li_cell_class();
 
         return (
             <li className="attendance_group">
