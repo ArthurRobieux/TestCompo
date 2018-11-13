@@ -12,11 +12,19 @@ class Member extends React.Component {
     show_change_presence_logo(result_profile, group_slug_name) {
 
         return (
-            <span className={"logo_group"}>
-                {this.props.member_list.state.attendance_group.map(logo_group_slug_name => (
-                    <img className="logo_presence" src={this.get_group_image(logo_group_slug_name)} alt="yes"
-                         onClick={() => this.change_presence(result_profile, logo_group_slug_name, group_slug_name)}/>
-                ))}
+            <span>
+
+                <div id={"show_logo_group"}>
+                    <img className={"logo_presence"} src={"Images/Plus.png"} alt={"show_logo_group"} />
+                </div>
+
+                <span className={"logo_group"} >
+                    {this.props.member_list.state.attendance_group.map(logo_group_slug_name => (
+                        <img className="logo_presence" src={this.get_group_image(logo_group_slug_name)} alt="logo_presence"
+                             onClick={() => this.change_presence(result_profile, logo_group_slug_name, group_slug_name)}/>
+                    ))}
+                </span>
+
             </span>
         );
     }
@@ -111,14 +119,14 @@ class Member extends React.Component {
         // No chore
         if(chores.length === 0){
             return(
-                <div className="li_cell" id="chores_icons">
+                <div id="chores_icons" className="li_cell">
                 </div>)
         }
 
         // One chore
         else if(chores.length === 1){
             return(
-                <div className="li_cell" id="chores_icons">
+                <div id="chores_icons" className="li_cell">
 
                     <img className="icon_task" src={this.create_chore_icon_name(chores[0].icon_name)} alt="icon-task"/>
 
@@ -134,7 +142,7 @@ class Member extends React.Component {
         // > 1 chores
         else{
             return(
-            <div className="li_cell" id="chores_icons">
+            <div id="chores_icons" className="li_cell">
 
                 <img className="icon_task" src="Images/icons_tasks/icon_box.svg" alt="icon-task"/>
                 {chores.length}

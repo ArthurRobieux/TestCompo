@@ -92,10 +92,8 @@ div{
   color: #243e68;
 }
 
-.logo_presence{
-  height: 18px;
-  padding: 2px;
-  cursor: pointer;
+#show_logo_group{
+  display: inline;
 }
 
 ul{
@@ -118,8 +116,8 @@ li:hover{
 .li_cell{
   vertical-align: middle;
   display: table-cell;
-  float: left;  text-align: left;
-
+  float: left;
+  text-align: center;
   width: 20%;
   padding:5px 0 5px 0;
   height: 0;
@@ -157,17 +155,13 @@ li:hover{
   background-color: #ececec;
 }
 
-.logo_group{
-  top : 20px;
-  right : 10px;
-}
-
 a{
   color: black;
   text-decoration: none;
 }
 
 .avatar{
+  width: 25px;
   border-radius: 100px;
   border: 1px solid black;
   color: #243e68;
@@ -183,17 +177,19 @@ a{
 .chore_name{
   position: relative;
   color: white;
-  top: -5px;
-  background-color: black;
+  top: -28px;
+  background-color: #243e68;
   border: 1px solid black;
   border-radius: 10px;
   text-align: center;
   display:none;
+  opacity: 0.75;
+  text-align: left;
+  padding: 5px;
 }
 
 .icon_task:hover + .chore_name, .chore_name:hover{
   display: block;
-  opacity: 0.75;
 }
 
 .icon_delete_chore{
@@ -201,4 +197,33 @@ a{
   width: 10px;
   height: 10px;
   cursor: pointer;
+}
+
+.logo_group{
+  top : -28px;
+  display: none;
+  opacity: 0.75;
+  position: relative;
+  border-radius: 10px;
+  background-color: #243e68;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#show_logo_group:hover + .logo_group, .logo_group:hover{
+  display: block;
+}
+
+.logo_presence{
+  height: 18px;
+  padding: 2px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  transform: scale(0.9);
+  opacity: 0.9;
+}
+
+.logo_presence:hover{
+  transform: scale(1);
+  opacity: 1;
 }
