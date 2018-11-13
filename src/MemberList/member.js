@@ -189,6 +189,16 @@ class Member extends React.Component {
         );
     }
 
+    show_past_stats(){
+        if(this.props.member_list.state.data.is_past) {
+            return (
+                <div className="li_cell">
+                    -
+                </div>
+            );
+        }
+    }
+
 
 
     // Render Table
@@ -202,8 +212,8 @@ class Member extends React.Component {
                 <Profile profile={this.props.result_profile.profile}/>
                 {/*Chores*/}
                 {this.get_profile_chores(this.props.result_profile.profile.id)}
-                {/*Group Name*/}
-                <div className="li_cell">{this.props.group.slug_name}</div>
+                {/*Stats*/}
+                {this.show_past_stats()}
                 {/*Other*/}
                 <div className="li_cell">{this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}</div>
 

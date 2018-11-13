@@ -32,12 +32,23 @@ class Group extends React.Component {
 
     show_members_header(){
         const group_name = this.props.group.slug_name;
-        if(group_name === 'available' || group_name === 'participant' || group_name === 'played'){
+        // Future event
+        if(group_name === 'available' || group_name === 'participant'){
             return(
                 <li className="members_header">
                     <div className="li_cell_profile">Profile</div>
                     <div className="li_cell">Chores</div>
-                    <div className="li_cell">Group</div>
+                    <div className="li_cell">Pres</div>
+                </li>
+            );
+        }
+        // Past event
+        else if(group_name === 'played'){
+            return(
+                <li className="members_header">
+                    <div className="li_cell_profile">Profile</div>
+                    <div className="li_cell">Chores</div>
+                    <div className="li_cell">Stats</div>
                     <div className="li_cell">Pres</div>
                 </li>
             );
