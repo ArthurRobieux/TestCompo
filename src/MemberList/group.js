@@ -42,7 +42,7 @@ class Group extends React.Component {
                 </div>
             );
         }
-        // Past event
+        // Past event (future + stats)
         else if(group_name === 'played'){
 
             const list_stats = [];
