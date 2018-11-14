@@ -14,7 +14,7 @@ class Member extends React.Component {
     show_change_presence_logo(result_profile, group_slug_name) {
 
         return (
-            <div className={this.props.member_list.state.li_cell_class}>
+            <div className="li_cell_presence">
 
                 <div id={"show_logo_group"}>
                     <img className={"logo_presence"} src={"Images/Plus.png"} alt={"show_logo_group"} />

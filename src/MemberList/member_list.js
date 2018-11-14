@@ -89,7 +89,7 @@ class MemberList extends React.Component {
     get_api_stats_data() {
 
         const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/'
-            + this.props.team_id +'/events/' + this.props.event_id + '/stats/';
+            + this.props.team_id +'/events/' + this.props.event_id + '/stats/players/';
 
         fetch(API_URL, {
             method: "GET",

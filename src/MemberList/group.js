@@ -37,8 +37,8 @@ class Group extends React.Component {
             return(
                 <div className="members_header">
                     <div className="li_cell_profile">Profile</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Chores</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Pres</div>
+                    <div className="li_cell_chore">Chores</div>
+                    <div className="li_cell_presence">Pres</div>
                 </div>
             );
         }
@@ -47,10 +47,13 @@ class Group extends React.Component {
             return(
                 <div className="members_header">
                     <div className="li_cell_profile">Profile</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Chores</div>
+                    <div className="li_cell_chore">Chores</div>
                     <div className={this.props.member_list.state.li_cell_class}>Buts</div>
                     <div className={this.props.member_list.state.li_cell_class}>PD</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Pres</div>
+                    <div className={this.props.member_list.state.li_cell_class}>la</div>
+                    <div className={this.props.member_list.state.li_cell_class}>li</div>
+                    <div className={this.props.member_list.state.li_cell_class}>lo</div>
+                    <div className="li_cell_presence">Pres</div>
                 </div>
             );
         }

@@ -29,14 +29,14 @@ class Chores extends React.Component {
         // No chore
         if(chores.length === 0){
             return(
-                <div className={this.props.member_list.state.li_cell_class}>
+                <div className="li_cell_chore">
                 </div>)
         }
 
         // One chore
         else if(chores.length === 1){
             return(
-                <div className={this.props.member_list.state.li_cell_class}>
+                <div className="li_cell_chore">
 
                     <img className="icon_task" src={this.create_chore_icon_name(chores[0].icon_name)} alt="icon-task"/>
 
@@ -52,7 +52,7 @@ class Chores extends React.Component {
         // > 1 chores
         else{
             return(
-            <div className={this.props.member_list.state.li_cell_class}>
+            <div className="li_cell_chore">
 
                 <img className="icon_task" src="Images/icons_tasks/icon_box.svg" alt="icon-task"/>
                 {chores.length}
