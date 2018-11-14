@@ -44,15 +44,19 @@ class Group extends React.Component {
         }
         // Past event
         else if(group_name === 'played'){
+
+            const list_stats = [];
+            for(var i=0; i<this.props.member_list.state.stats_data.categories[0].stats.length; i++){
+                list_stats.push(this.props.member_list.state.stats_data.categories[0].stats[i].localized_name_short);
+            }
+
             return(
                 <div className="members_header">
                     <div className="li_cell_profile">Profile</div>
                     <div className="li_cell_chore">Chores</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Buts</div>
-                    <div className={this.props.member_list.state.li_cell_class}>PD</div>
-                    <div className={this.props.member_list.state.li_cell_class}>la</div>
-                    <div className={this.props.member_list.state.li_cell_class}>li</div>
-                    <div className={this.props.member_list.state.li_cell_class}>lo</div>
+                    {list_stats.map(stat => (
+                        <div className={this.props.member_list.state.li_cell_class}>{stat}</div>
+                    ))}
                     <div className="li_cell_presence">Pres</div>
                 </div>
             );
