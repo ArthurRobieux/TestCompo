@@ -5,7 +5,7 @@ import Group from './group.js';
 class MemberList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {attendance_group: [], event_data: {}, stats_data: {}, notifications_list: [], li_cell_class:''}
+        this.state = {attendance_group: [], event_data: {}, stats_data: {}, ratings_data: {}, notifications_list: [], li_cell_class:''}
     }
 
     // Get attendance groups in state.event_data
@@ -108,10 +108,32 @@ class MemberList extends React.Component {
         console.log(this.state.stats_data);
     }
 
+    //Get ratings_data from API and stock them in state.event_data
+    get_api_ratings_data() {
+
+        const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/'
+            + this.props.team_id +'/events/' + this.props.event_id + '/stats/players/ranking/';
+
+        fetch(API_URL, {
+            method: "GET",
+            headers: {
+                "Authorization": this.props.bearer,
+                "Content-Type": "application/json",
+            }
+        })
+        .then(response =>
+            response.json()
+        )
+        .then(json_response =>
+            this.setState({ratings_data: json_response}),
+        );
+    }
+
     // Call this function at the beginning
     componentDidMount() {
         this.get_api_event_data();
         this.get_api_stats_data();
+        this.get_api_ratings_data();
     }
 
     // Render Table

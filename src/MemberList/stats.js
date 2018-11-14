@@ -60,7 +60,7 @@ class Stats extends React.Component {
         if (this.props.member_list.state.event_data.is_past) {
 
             const elements = document.getElementsByClassName('li_cell_past');
-            const width = 45 / (this.props.member_list.state.stats_data.categories[0].stats.length);
+            const width = 34 / (this.props.member_list.state.stats_data.categories[0].stats.length);
             const new_width = width.toString() + '%';
 
             for (var i = 0; i < elements.length; i++) {

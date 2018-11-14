@@ -42,7 +42,7 @@ class Group extends React.Component {
                 </div>
             );
         }
-        // Past event (future + stats)
+        // Past event (future + stats + note)
         else if(group_name === 'played'){
 
             const list_stats = [];
@@ -53,6 +53,8 @@ class Group extends React.Component {
             return(
                 <div className="members_header">
                     <div className="li_cell_profile">Profile</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Moy</div>
+                    <div className={this.props.member_list.state.li_cell_class}>Note</div>
                     <div className="li_cell_chore">Chores</div>
                     {list_stats.map(stat => (
                         <div className={this.props.member_list.state.li_cell_class}>{stat}</div>

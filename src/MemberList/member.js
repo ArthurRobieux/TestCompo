@@ -3,6 +3,7 @@ import React from "react";
 import Profile from './profile.js';
 import Chores from './chores.js';
 import Stats from './stats.js';
+import Note from './note.js';
 
 class Member extends React.Component {
     constructor(props) {
@@ -104,6 +105,8 @@ class Member extends React.Component {
 
                 {/*Profile*/}
                 <Profile profile={this.props.result_profile.profile}/>
+                {/*Notes*/}
+                <Note member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Chores*/}
                 <Chores member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Stats*/}
