@@ -120,6 +120,11 @@ li:hover{
   background-color: #dddddd;
 }
 
+#stats{
+  width: 35%;
+  display: inline;
+}
+
 .li_stats{
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -165,6 +170,19 @@ li:hover{
   display: table-cell;
   text-align: center;
   width: 15%;
+  max-width: 30%;
+  padding:5px 0 5px 5px;
+  height: 0;
+}
+
+.li_ratings{
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+  width: 6%;
   max-width: 30%;
   padding:5px 0 5px 5px;
   height: 0;
@@ -284,7 +302,7 @@ a{
 .donut_chart{
   position: relative;
   bottom: 21px;
-  left: 11px;
+  left: 8px;
   display: table;
 }
 

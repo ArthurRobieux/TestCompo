@@ -39,7 +39,7 @@ class Stats extends React.Component {
             }
 
             return (
-                <span className={"list_stats"}>
+                <div id={"stats"}>
 
                     {this.state.player_stats_values.map(stat_value => (
                         <div className={"li_stats"}>
@@ -47,7 +47,7 @@ class Stats extends React.Component {
                         </div>
                     ))}
 
-                </span>
+                </div>
             );
         }
 
@@ -60,7 +60,7 @@ class Stats extends React.Component {
         if (this.props.member_list.state.event_data.is_past) {
 
             const elements = document.getElementsByClassName("li_stats");
-            const width = 34 / (this.props.member_list.state.stats_data.categories[0].stats.length);
+            const width = 35 / (this.props.member_list.state.stats_data.categories[0].stats.length);
             const new_width = width.toString() + '%';
 
             for (var i = 0; i < elements.length; i++) {

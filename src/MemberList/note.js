@@ -29,7 +29,7 @@ class Note extends React.Component {
             // If no average, show '-'
             if(avg===null || avg===undefined){
                 return(
-                    <div className={"li_stats"}>
+                    <div className={"li_ratings"}>
                         -
                     </div>
                 );
@@ -37,7 +37,7 @@ class Note extends React.Component {
 
             // Else, show donut with note
             return(
-                <div className={"li_stats"}>
+                <div className={"li_ratings"}>
                     {avg}
                     <span className={"donut_chart"}>
                         <DonutChart size={25} stroke={2} percentage={100-avg*10} />
@@ -71,7 +71,7 @@ class Note extends React.Component {
             // If no note, show ratings slider
             if(note===null || note ===-1 || note ===undefined){
                 return(
-                    <div className={"li_stats"}>
+                    <div className={"li_ratings"}>
                         {this.showRatingsSlider()}
                     </div>
                 );
@@ -79,7 +79,7 @@ class Note extends React.Component {
 
             // Else, show donut with note
             return(
-                <div className={"li_stats"}>
+                <div className={"li_ratings"}>
                     {note}
                     <span className={"donut_chart"}>
                         <DonutChart size={25} stroke={2} percentage={100-note*10} />

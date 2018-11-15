@@ -53,12 +53,14 @@ class Group extends React.Component {
             return(
                 <div className="members_header">
                     <div className={"li_profile"}>Profile</div>
-                    <div className={"li_stats"}>Moy</div>
-                    <div className={"li_stats"}>Note</div>
+                    <div className={"li_ratings"}>Moy</div>
+                    <div className={"li_ratings"}>Note</div>
                     <div className={"li_chore"}>Chores</div>
-                    {list_stats.map(stat => (
-                        <div className={"li_stats"}>{stat}</div>
-                    ))}
+                    <div id={"stats"}>
+                        {list_stats.map(stat => (
+                            <div className={"li_stats"}>{stat}</div>
+                        ))}
+                    </div>
                     <div className="li_presence">Pres</div>
                 </div>
             );
