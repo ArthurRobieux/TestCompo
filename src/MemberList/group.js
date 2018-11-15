@@ -36,9 +36,9 @@ class Group extends React.Component {
         if(group_name === 'available' || group_name === 'participant'){
             return(
                 <div className="members_header">
-                    <div className="li_cell_profile">Profile</div>
-                    <div className="li_cell_chore">Chores</div>
-                    <div className="li_cell_presence">Pres</div>
+                    <div className="li_profile">Profile</div>
+                    <div className="li_chore">Chores</div>
+                    <div className="li_presence">Pres</div>
                 </div>
             );
         }
@@ -52,33 +52,21 @@ class Group extends React.Component {
 
             return(
                 <div className="members_header">
-                    <div className="li_cell_profile">Profile</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Moy</div>
-                    <div className={this.props.member_list.state.li_cell_class}>Note</div>
-                    <div className="li_cell_chore">Chores</div>
+                    <div className={"li_profile"}>Profile</div>
+                    <div className={"li_stats"}>Moy</div>
+                    <div className={"li_stats"}>Note</div>
+                    <div className={"li_chore"}>Chores</div>
                     {list_stats.map(stat => (
-                        <div className={this.props.member_list.state.li_cell_class}>{stat}</div>
+                        <div className={"li_stats"}>{stat}</div>
                     ))}
-                    <div className="li_cell_presence">Pres</div>
+                    <div className="li_presence">Pres</div>
                 </div>
             );
         }
     }
 
-    // Define class of cells in the table
-    defineLiCellClass(){
-        if(this.props.member_list.state.event_data.is_past){
-            this.props.member_list.state.li_cell_class = 'li_cell_past';
-        }
-        else{
-            this.props.member_list.state.li_cell_class = 'li_cell_future';
-        }
-    }
-
     // Render Table
     render() {
-
-        this.defineLiCellClass();
 
         return (
             <li className="attendance_group">

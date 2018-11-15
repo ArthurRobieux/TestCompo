@@ -42,7 +42,7 @@ class Stats extends React.Component {
                 <span className={"list_stats"}>
 
                     {this.state.player_stats_values.map(stat_value => (
-                        <div className={this.props.member_list.state.li_cell_class}>
+                        <div className={"li_stats"}>
                             {stat_value}
                         </div>
                     ))}
@@ -54,12 +54,12 @@ class Stats extends React.Component {
     }
 
 
-    // Adapt li_cell_past width according to number of columns (stats)
+    // Adapt li_stats width according to number of columns (stats)
     // Nb columns = nb stats
     adaptColumnSize() {
         if (this.props.member_list.state.event_data.is_past) {
 
-            const elements = document.getElementsByClassName('li_cell_past');
+            const elements = document.getElementsByClassName("li_stats");
             const width = 34 / (this.props.member_list.state.stats_data.categories[0].stats.length);
             const new_width = width.toString() + '%';
 

@@ -64,7 +64,7 @@ class Presence extends React.Component {
     render() {
         return (
 
-            <div className="li_cell_presence">
+            <div className="li_presence">
 
                 <div id={"show_logo_group"}>
                     <img className={"logo_presence"} src={"Images/Plus.png"} alt={"show_logo_group"} />

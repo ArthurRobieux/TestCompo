@@ -36,10 +36,9 @@ class Member extends React.Component {
                 <Chores member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Stats*/}
                 <Stats member_list={this.props.member_list} result_profile={this.props.result_profile}/>
-                {/*Other*/}
+                {/*Presence*/}
                 <Presence member_list={this.props.member_list} result_profile={this.props.result_profile}
                     group={this.props.group}/>
-                {/*{this.showChangePresenceLogo(this.props.result_profile, this.props.group.slug_name)}*/}
 
             </li>
         );

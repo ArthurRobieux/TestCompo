@@ -29,7 +29,7 @@ class Note extends React.Component {
             // If no average, show '-'
             if(avg===null || avg===undefined){
                 return(
-                    <div className={this.props.member_list.state.li_cell_class}>
+                    <div className={"li_stats"}>
                         -
                     </div>
                 );
@@ -37,7 +37,7 @@ class Note extends React.Component {
 
             // Else, show donut with note
             return(
-                <div className={this.props.member_list.state.li_cell_class}>
+                <div className={"li_stats"}>
                     {avg}
                     <span className={"donut_chart"}>
                         <DonutChart size={25} stroke={2} percentage={100-avg*10} />
@@ -71,7 +71,7 @@ class Note extends React.Component {
             // If no note, show ratings slider
             if(note===null || note ===-1 || note ===undefined){
                 return(
-                    <div className={this.props.member_list.state.li_cell_class}>
+                    <div className={"li_stats"}>
                         {this.showRatingsSlider()}
                     </div>
                 );
@@ -79,7 +79,7 @@ class Note extends React.Component {
 
             // Else, show donut with note
             return(
-                <div className={this.props.member_list.state.li_cell_class}>
+                <div className={"li_stats"}>
                     {note}
                     <span className={"donut_chart"}>
                         <DonutChart size={25} stroke={2} percentage={100-note*10} />
@@ -96,9 +96,9 @@ class Note extends React.Component {
         if(this.props.group==="played") {
             return (
                 <span>
-                <span id={"show_ratings_slider"}>Noter</span>
-                <RatingsSlider member_list={this.props.member_list} result_profile={this.props.result_profile}/>
-            </span>
+                    <span id={"show_ratings_slider"}>Noter</span>
+                    <RatingsSlider member_list={this.props.member_list} result_profile={this.props.result_profile}/>
+                </span>
             );
         }
 

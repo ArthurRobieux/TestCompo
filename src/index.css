@@ -120,19 +120,7 @@ li:hover{
   background-color: #dddddd;
 }
 
-.li_cell_future{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  display: inline-block;
-  float: left;
-  text-align: center;
-  width: 25%;
-  padding:5px 0 5px 0;
-  height: 0;
-}
-
-.li_cell_past{
+.li_stats{
   white-space: nowrap;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -144,7 +132,7 @@ li:hover{
   height: 0;
 }
 
-.li_cell_chore{
+.li_chore{
   white-space: nowrap;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -156,7 +144,7 @@ li:hover{
   height: 0;
 }
 
-.li_cell_profile{
+.li_profile{
   white-space: nowrap;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -169,7 +157,7 @@ li:hover{
   height: 0;
 }
 
-.li_cell_presence{
+.li_presence{
   float: right;
   white-space: nowrap;
   text-overflow: ellipsis;
