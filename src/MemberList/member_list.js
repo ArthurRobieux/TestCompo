@@ -9,7 +9,7 @@ class MemberList extends React.Component {
     }
 
     // Get attendance groups in state.event_data
-    get_attendance_group() {
+    getAttendanceGroup() {
 
         this.state.attendance_group = [];
 
@@ -24,7 +24,7 @@ class MemberList extends React.Component {
     }
 
     // Show and create the table
-    show_table() {
+    showTable() {
         try {
             return (
 
@@ -45,26 +45,26 @@ class MemberList extends React.Component {
     }
 
     // Show notifications
-    show_notifications_list() {
+    showNotificationsList() {
         return(
             <div id="notifications_list">
                 {this.state.notifications_list.map(notification => (
-                    this.show_notification(notification)
+                    this.showNotification(notification)
                 ))}
             </div>
         );
     }
 
-    show_notification(notification) {
+    showNotification(notification) {
         return(
-            <div class="notification">
+            <div className={"notification"}>
                 {notification}<br/>
             </div>
         );
     }
 
     //Get event_data from API and stock them in state.event_data
-    get_api_event_data() {
+    getApiEventData() {
 
         const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/'
             + this.props.team_id +'/events/' + this.props.event_id + '/';
@@ -86,7 +86,7 @@ class MemberList extends React.Component {
     }
 
         //Get event_data from API and stock them in state.event_data
-    get_api_stats_data() {
+    getApiStatsData() {
 
         const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/'
             + this.props.team_id +'/events/' + this.props.event_id + '/stats/players/';
@@ -109,7 +109,7 @@ class MemberList extends React.Component {
     }
 
     //Get ratings_data from API and stock them in state.event_data
-    get_api_ratings_data() {
+    getApiRatingsData() {
 
         const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/'
             + this.props.team_id +'/events/' + this.props.event_id + '/stats/players/ranking/';
@@ -131,21 +131,21 @@ class MemberList extends React.Component {
 
     // Call this function at the beginning
     componentDidMount() {
-        this.get_api_event_data();
-        this.get_api_stats_data();
-        this.get_api_ratings_data();
+        this.getApiEventData();
+        this.getApiStatsData();
+        this.getApiRatingsData();
     }
 
     // Render Table
     render() {
 
-        this.get_attendance_group();
+        this.getAttendanceGroup();
 
         return (
             <div>
                 <h3>Table with API event_data (id={this.state.event_data.id})</h3>
-                {this.show_table()}
-                {this.show_notifications_list()}
+                {this.showTable()}
+                {this.showNotificationsList()}
             </div>
         );
     }

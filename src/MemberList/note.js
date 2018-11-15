@@ -6,7 +6,7 @@ import RatingsSlider from './ratings_slider.js';
 class Note extends React.Component {
 
     // Show average cell
-    show_avg(){
+    showAvg(){
 
         // If past event, calculate average
         if(this.props.member_list.state.event_data.is_past) {
@@ -48,7 +48,7 @@ class Note extends React.Component {
     }
 
     // Show note cell
-    show_note(){
+    showNote(){
 
         // If past event, get note
         if(this.props.member_list.state.event_data.is_past) {
@@ -72,7 +72,7 @@ class Note extends React.Component {
             if(note===null || note ===-1 || note ===undefined){
                 return(
                     <div className={this.props.member_list.state.li_cell_class}>
-                        {this.show_ratings_slider()}
+                        {this.showRatingsSlider()}
                     </div>
                 );
             }
@@ -90,7 +90,7 @@ class Note extends React.Component {
     }
 
     // Show ratings slider
-    show_ratings_slider(){
+    showRatingsSlider(){
 
         // If match played, show ratings slider
         if(this.props.group==="played") {
@@ -112,8 +112,8 @@ class Note extends React.Component {
     render() {
         return (
             <span className={"notes"}>
-                {this.show_avg()}
-                {this.show_note()}
+                {this.showAvg()}
+                {this.showNote()}
             </span>
         );
     }

@@ -4,7 +4,7 @@ import React from "react";
 class RatingsSlider extends React.Component {
 
 
-    rate_event_profile(note) {
+    rateEventProfile(note) {
 
         this.props.member_list.setState({});
 
@@ -29,9 +29,9 @@ class RatingsSlider extends React.Component {
         })
         .then(response =>
             this.props.member_list.setState({}),
-            this.props.member_list.get_api_event_data(),
-            this.props.member_list.get_api_stats_data(),
-            this.props.member_list.get_api_ratings_data(),
+            this.props.member_list.getApiEventData(),
+            this.props.member_list.getApiStatsData(),
+            this.props.member_list.getApiRatingsData(),
             console.log("Notation Done : Player " + profile_id + " / Note " + note),
         );
 
@@ -43,16 +43,16 @@ class RatingsSlider extends React.Component {
         return (
             <span className={"ratings_slider"}>
                 <div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(1)}>1 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(2)}>2 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(3)}>3 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(4)}>4 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(5)}>5 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(6)}>6 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(7)}>7 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(8)}>8 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(9)}>9 </div>
-                    <div className={"rate"} onClick={() => this.rate_event_profile(10)}>10</div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(1)}>1 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(2)}>2 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(3)}>3 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(4)}>4 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(5)}>5 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(6)}>6 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(7)}>7 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(8)}>8 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(9)}>9 </div>
+                    <div className={"rate"} onClick={() => this.rateEventProfile(10)}>10</div>
                 </div>
 
             </span>

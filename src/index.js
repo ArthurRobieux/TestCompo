@@ -18,7 +18,7 @@ class TableApp extends React.Component {
         this.state = {tab: 'table'}
     }
 
-    change_tab(){
+    changeTab(){
         if(this.state.tab === 'table'){
             this.setState({tab: 'compo'});
         }
@@ -27,7 +27,7 @@ class TableApp extends React.Component {
         }
     }
 
-    show_tab(){
+    showTab(){
         if(this.state.tab === 'table'){
             return(<MemberList team_id={team_id} event_id={event_id} bearer={bearer}/>);
         }
@@ -46,8 +46,8 @@ class TableApp extends React.Component {
     render() {
         return (
             <div id="global_content">
-                <button onClick={() => this.change_tab()}>Change Tab </button>
-                {this.show_tab()}
+                <button onClick={() => this.changeTab()}>Change Tab </button>
+                {this.showTab()}
 
             </div>
         );

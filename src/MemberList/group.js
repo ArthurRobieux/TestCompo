@@ -4,20 +4,20 @@ import Member from './member.js';
 
 class Group extends React.Component {
 
-    define_head_id(group) {
+    defineHeadId(group) {
         return ("header_" + group + "_members");
     }
 
-    define_head_class(group) {
+    defineHeadClass(group) {
         return ("title_" + group + "_members");
     }
 
-    define_body_id(group) {
+    defineBodyId(group) {
         return ('body_' + group + "_members");
     }
 
     // Show or hide body of a group
-    show_hide_group(group_slug_name) {
+    showHideGroup(group_slug_name) {
         this.setState({});
 
         const id = 'body_' + group_slug_name + '_members';
@@ -30,7 +30,7 @@ class Group extends React.Component {
         }
     }
 
-    show_members_header(){
+    showMembersHeader(){
         const group_name = this.props.group.slug_name;
         // Future event
         if(group_name === 'available' || group_name === 'participant'){
@@ -66,7 +66,7 @@ class Group extends React.Component {
     }
 
     // Define class of cells in the table
-    define_li_cell_class(){
+    defineLiCellClass(){
         if(this.props.member_list.state.event_data.is_past){
             this.props.member_list.state.li_cell_class = 'li_cell_past';
         }
@@ -78,21 +78,21 @@ class Group extends React.Component {
     // Render Table
     render() {
 
-        this.define_li_cell_class();
+        this.defineLiCellClass();
 
         return (
             <li className="attendance_group">
 
-                <div id={this.define_head_id(this.props.group.slug_name)}>
-                    <div className={this.define_head_class(this.props.group.slug_name)}
-                         onClick={() => this.show_hide_group(this.props.group.slug_name)}>
+                <div id={this.defineHeadId(this.props.group.slug_name)}>
+                    <div className={this.defineHeadClass(this.props.group.slug_name)}
+                         onClick={() => this.showHideGroup(this.props.group.slug_name)}>
                         {this.props.group.localized_name} ({this.props.group.results.length})
                     </div>
                 </div>
 
-                {this.show_members_header()}
+                {this.showMembersHeader()}
 
-                <ul id={this.define_body_id(this.props.group.slug_name)}>
+                <ul id={this.defineBodyId(this.props.group.slug_name)}>
                     {/* Loop on each members of the group */}
                     {this.props.group.results.map(result_profile => (
                         <Member group={this.props.group} result_profile={result_profile}

@@ -6,7 +6,7 @@ class Stats extends React.Component {
         this.state = {player_stats_values: []}
     }
 
-    show_past_stats(){
+    showPastStats(){
 
         // Ici on dispose de la liste des stats ainsi que du profile du joueur.
         // Grâce à ces ID on va chercher la valeur de chacun de ces stats.
@@ -56,7 +56,7 @@ class Stats extends React.Component {
 
     // Adapt li_cell_past width according to number of columns (stats)
     // Nb columns = nb stats
-    adapt_column_size() {
+    adaptColumnSize() {
         if (this.props.member_list.state.event_data.is_past) {
 
             const elements = document.getElementsByClassName('li_cell_past');
@@ -71,7 +71,7 @@ class Stats extends React.Component {
     }
 
     componentDidMount() {
-        this.adapt_column_size();
+        this.adaptColumnSize();
     }
 
     // Render Table
@@ -79,7 +79,7 @@ class Stats extends React.Component {
 
         return (
             <span className={"stats"}>
-                {this.show_past_stats(this.props.result_profile.profile.id)}
+                {this.showPastStats(this.props.result_profile.profile.id)}
             </span>
         );
     }

@@ -11,8 +11,8 @@ class Member extends React.Component {
         this.state = {chores: {}};
     }
 
-    // Show change_presence logo in the table
-    show_change_presence_logo(result_profile, group_slug_name) {
+    // Show changePresence logo in the table
+    showChangePresenceLogo(result_profile, group_slug_name) {
 
         return (
             <div className="li_cell_presence">
@@ -23,8 +23,8 @@ class Member extends React.Component {
 
                 <span className={"logo_group"} >
                     {this.props.member_list.state.attendance_group.map(logo_group_slug_name => (
-                        <img className="logo_presence" src={this.get_group_image(logo_group_slug_name)} alt="logo_presence"
-                             onClick={() => this.change_presence(result_profile, logo_group_slug_name, group_slug_name)}/>
+                        <img className="logo_presence" src={this.getGroupImage(logo_group_slug_name)} alt="logo_presence"
+                             onClick={() => this.changePresence(result_profile, logo_group_slug_name, group_slug_name)}/>
                     ))}
                 </span>
 
@@ -33,7 +33,7 @@ class Member extends React.Component {
     }
 
     // Get the right image for each group
-    get_group_image(group) {
+    getGroupImage(group) {
         if (group === 'played' || group === 'available' || group === 'present' || group === 'waiting_list' || group === 'participant') {
             return ("Images/Yes.png")
         }
@@ -49,7 +49,7 @@ class Member extends React.Component {
     }
 
     // Call the API in order to change profile attendance
-    change_presence(result_profile, new_group, previous_group) {
+    changePresence(result_profile, new_group, previous_group) {
 
         this.props.member_list.setState({});
 
@@ -72,7 +72,7 @@ class Member extends React.Component {
             console.log(result_profile.profile.first_name + " update done."),
             this.props.member_list.state.notifications_list.push(result_profile.profile.first_name + " "
                 + result_profile.profile.last_name + " update done."),
-            this.props.member_list.get_api_ratings_data(),
+            this.props.member_list.getApiRatingsData(),
         );
 
         // OnClick, to avoid loading, profile is moved from group list to new group list
@@ -89,11 +89,11 @@ class Member extends React.Component {
         this.props.member_list.state.event_data.attendees[new_group_pos].results.push(result_profile);
     }
 
-    define_body_row_id(group, profile_id) {
+    defineBodyRowId(group, profile_id) {
         return (group + "_member_" + profile_id);
     }
 
-    define_body_class(group) {
+    defineBodyClass(group) {
         return (group + "_members");
     }
 
@@ -101,8 +101,8 @@ class Member extends React.Component {
     render() {
 
         return (
-            <li id={this.define_body_row_id(this.props.group.slug_name, this.props.result_profile.profile.id)}
-                className={this.define_body_class(this.props.group.slug_name)}>
+            <li id={this.defineBodyRowId(this.props.group.slug_name, this.props.result_profile.profile.id)}
+                className={this.defineBodyClass(this.props.group.slug_name)}>
 
                 {/*Profile*/}
                 <Profile profile={this.props.result_profile.profile}/>
@@ -114,7 +114,7 @@ class Member extends React.Component {
                 {/*Stats*/}
                 <Stats member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Other*/}
-                {this.show_change_presence_logo(this.props.result_profile, this.props.group.slug_name)}
+                {this.showChangePresenceLogo(this.props.result_profile, this.props.group.slug_name)}
 
             </li>
         );

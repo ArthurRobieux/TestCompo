@@ -5,7 +5,7 @@ class Chores extends React.Component {
 
 
     // Get profiles chores
-    get_profile_chores(profile_id){
+    getProfileChores(profile_id){
 
         const chores = [];
 
@@ -38,11 +38,11 @@ class Chores extends React.Component {
             return(
                 <div className="li_cell_chore">
 
-                    <img className="icon_task" src={this.create_chore_icon_name(chores[0].icon_name)} alt="icon-task"/>
+                    <img className="icon_task" src={this.createChoreIconName(chores[0].icon_name)} alt="icon-task"/>
 
                     <div className="chore_name">
                         <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
-                             onClick={() => this.unassign_chore(chores[0], profile_id)}/>
+                             onClick={() => this.unassignChore(chores[0], profile_id)}/>
                         {chores[0].name}
                     </div>
 
@@ -69,7 +69,7 @@ class Chores extends React.Component {
 
     }
 
-    create_chore_icon_name(icon_name){
+    createChoreIconName(icon_name){
         return("Images/icons_tasks/" + icon_name + ".svg");
     }
 
@@ -77,7 +77,7 @@ class Chores extends React.Component {
         return(
             <span>
                 <img className="icon_delete_chore" src="Images/No.png" alt="delete_chore"
-                     onClick={() => this.unassign_chore(chore, profile_id)}/>
+                     onClick={() => this.unassignChore(chore, profile_id)}/>
                 {chore.name}
                 <br/>
             </span>
@@ -85,7 +85,7 @@ class Chores extends React.Component {
     }
 
 
-    unassign_chore(chore, profile_id){
+    unassignChore(chore, profile_id){
 
         this.props.member_list.setState({});
 
@@ -103,7 +103,7 @@ class Chores extends React.Component {
         })
         .then(response =>
             console.log("Chore " + chore.name + " (" + chore.id + ") deleted of player " + profile_id + "."),
-            this.props.member_list.get_api_event_data(),
+            this.props.member_list.getApiEventData(),
         );
     }
 
@@ -113,7 +113,7 @@ class Chores extends React.Component {
 
         return (
             <span className={"chores"}>
-                {this.get_profile_chores(this.props.result_profile.profile.id)}
+                {this.getProfileChores(this.props.result_profile.profile.id)}
             </span>
         );
     }
