@@ -313,7 +313,7 @@ a{
   border-radius: 10px;
 }
 
-.rate{
+.rate1, .rate2, .rate3, .rate4, .rate5, .rate6, .rate7, .rate8, .rate9, .rate10{
   position: relative;
   display: inline;
   cursor: pointer;
@@ -322,6 +322,42 @@ a{
   padding: 5px;
 }
 
-.rate:hover{
-  background-color: #bababa;
+.rate1:hover{
+  background-color: rgba(213, 0, 0, 0.5);
+}
+
+.rate2:hover{
+  background-color: rgba(183, 28, 28, 0.5);
+}
+
+.rate3:hover{
+  background-color: rgba(211, 47, 47, 0.5);
+}
+
+.rate4:hover{
+  background-color: rgba(244, 67, 54, 0.5);
+}
+
+.rate5:hover{
+  background-color: rgba(245, 124, 0, 0.5);
+}
+
+.rate6:hover{
+  background-color: rgba(139, 195, 74, 0.5);
+}
+
+.rate7:hover{
+  background-color: rgba(104, 159, 56, 0.5);
+}
+
+.rate8:hover{
+  background-color: rgba(76, 175, 80, 0.5);
+}
+
+.rate9:hover{
+  background-color: rgba(56, 142, 60, 0.5);
+}
+
+.rate10:hover{
+  background-color: rgba(27, 94, 32, 0.5);
 }

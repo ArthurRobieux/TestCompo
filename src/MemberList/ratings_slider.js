@@ -43,16 +43,16 @@ class RatingsSlider extends React.Component {
         return (
             <span className={"ratings_slider"}>
                 <div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(1)}>1 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(2)}>2 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(3)}>3 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(4)}>4 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(5)}>5 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(6)}>6 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(7)}>7 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(8)}>8 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(9)}>9 </div>
-                    <div className={"rate"} onClick={() => this.rateEventProfile(10)}>10</div>
+                    <div className={"rate1"} onClick={() => this.rateEventProfile(1)}>1 </div>
+                    <div className={"rate2"} onClick={() => this.rateEventProfile(2)}>2 </div>
+                    <div className={"rate3"} onClick={() => this.rateEventProfile(3)}>3 </div>
+                    <div className={"rate4"} onClick={() => this.rateEventProfile(4)}>4 </div>
+                    <div className={"rate5"} onClick={() => this.rateEventProfile(5)}>5 </div>
+                    <div className={"rate6"} onClick={() => this.rateEventProfile(6)}>6 </div>
+                    <div className={"rate7"} onClick={() => this.rateEventProfile(7)}>7 </div>
+                    <div className={"rate8"} onClick={() => this.rateEventProfile(8)}>8 </div>
+                    <div className={"rate9"} onClick={() => this.rateEventProfile(9)}>9 </div>
+                    <div className={"rate10"} onClick={() => this.rateEventProfile(10)}>10</div>
                 </div>
 
             </span>
