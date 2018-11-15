@@ -1,5 +1,7 @@
 import React from "react";
 
+import DonutChart from './donut_chart.js';
+
 class Note extends React.Component {
 
     show_moy(){
@@ -33,6 +35,9 @@ class Note extends React.Component {
             return(
                 <div className={this.props.member_list.state.li_cell_class}>
                     {moy}
+                    <span className={"donut_chart"}>
+                        <DonutChart size={25} stroke={2} percentage={100-moy*10} />
+                    </span>
                 </div>
             );
         }
@@ -57,9 +62,10 @@ class Note extends React.Component {
                 }
             }
 
-            if(note===null){
+            if(note===null || note ===-1){
                 return(
-                    <div className={this.props.member_list.state.li_cell_class}>
+                    <div className={this.props.member_list.state.li_cell_class}
+                         onClick={() => this.rate_event_profile()}>
                         Noter
                     </div>
                 );
@@ -68,15 +74,50 @@ class Note extends React.Component {
             return(
                 <div className={this.props.member_list.state.li_cell_class}>
                     {note}
+                    <span className={"donut_chart"}>
+                        <DonutChart size={25} stroke={2} percentage={100-note*10} />
+                    </span>
                 </div>
             );
         }
     }
 
+    rate_event_profile() {
+
+        this.props.member_list.setState({});
+
+        const profile_id = 154;
+        const note = 7;
+
+        var body_data = {};
+        body_data[profile_id] = note;
+        body_data = JSON.stringify(body_data);
+
+        const API_URL = 'http://api.local.sporteasy.net:8000/v2.1/teams/' + this.props.member_list.props.team_id +
+            '/events/' + this.props.member_list.props.event_id + '/profiles-ratings/';
+        const bearer = this.props.member_list.props.bearer;
+
+        // Request to change attendance
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Authorization": bearer,
+                "Content-Type": "application/json",
+            },
+            body: body_data,
+        })
+        .then(response =>
+            this.props.member_list.setState({}),
+            console.log("notation done")
+        );
+
+
+    }
+
+
     render() {
         return (
             <span className={"note"}>
-
                 {this.show_moy()}
                 {this.show_note()}
 

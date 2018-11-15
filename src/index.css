@@ -291,3 +291,10 @@ a{
   border: 1px solid black;
   color: #243e68;
 }
+
+.donut_chart{
+  position: relative;
+  bottom: 23px;
+  left: 11px;
+  display: table;
+}
