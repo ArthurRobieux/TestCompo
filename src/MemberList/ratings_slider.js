@@ -30,6 +30,8 @@ class RatingsSlider extends React.Component {
         .then(response =>
             this.props.member_list.setState({}),
             this.props.member_list.get_api_event_data(),
+            this.props.member_list.get_api_stats_data(),
+            this.props.member_list.get_api_ratings_data(),
             console.log("Notation Done : Player " + profile_id + " / Note " + note),
         );
 

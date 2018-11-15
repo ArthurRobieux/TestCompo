@@ -72,6 +72,7 @@ class Member extends React.Component {
             console.log(result_profile.profile.first_name + " update done."),
             this.props.member_list.state.notifications_list.push(result_profile.profile.first_name + " "
                 + result_profile.profile.last_name + " update done."),
+            this.props.member_list.get_api_ratings_data(),
         );
 
         // OnClick, to avoid loading, profile is moved from group list to new group list
@@ -106,7 +107,8 @@ class Member extends React.Component {
                 {/*Profile*/}
                 <Profile profile={this.props.result_profile.profile}/>
                 {/*Notes*/}
-                <Note member_list={this.props.member_list} result_profile={this.props.result_profile}/>
+                <Note member_list={this.props.member_list} result_profile={this.props.result_profile}
+                      group={this.props.group.slug_name}/>
                 {/*Chores*/}
                 <Chores member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 {/*Stats*/}
