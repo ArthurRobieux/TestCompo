@@ -295,17 +295,21 @@ a{
 
 .donut_chart{
   position: relative;
-  bottom: 23px;
+  bottom: 21px;
   left: 11px;
+  display: table;
+}
+
+#show_ratings_slider:hover + .ratings_slider, .ratings_slider:hover{
   display: table;
 }
 
 .ratings_slider{
   position: relative;
-  display: table;
-  background-color: green;
+  display: none;
+  background-color: #ececec;
   height: 30px;
-  bottom: 5px;
+  bottom: 22px;
   border-radius: 10px;
 }
 
@@ -319,5 +323,5 @@ a{
 }
 
 .rate:hover{
-  background-color: red;
+  background-color: #bababa;
 }

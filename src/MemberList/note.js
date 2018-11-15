@@ -66,6 +66,7 @@ class Note extends React.Component {
             if(note===null || note ===-1){
                 return(
                     <div className={this.props.member_list.state.li_cell_class}>
+                        <span id={"show_ratings_slider"}>Noter</span>
                         <RatingsSlider member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                     </div>
                 );
