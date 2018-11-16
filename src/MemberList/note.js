@@ -105,7 +105,7 @@ class Note extends React.Component {
         if(this.props.group==="played") {
             return (
                 <span>
-                    <span id={"show_ratings_slider"}>Noter</span>
+                    <span id={"show_ratings_slider"}>Rate</span>
                     <RatingsSlider member_list={this.props.member_list} result_profile={this.props.result_profile}/>
                 </span>
             );

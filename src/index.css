@@ -342,6 +342,12 @@ a{
   display: block;
 }
 
+#show_ratings_slider{
+  padding: 5px;
+  border-radius: 50px;
+  background: white;
+}
+
 #show_ratings_slider:hover + .ratings_slider, .ratings_slider:hover{
   display: table;
 }
