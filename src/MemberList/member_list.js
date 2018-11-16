@@ -1,6 +1,7 @@
 import React from "react";
 
 import Group from './group.js';
+import ScrollSync from "./ScrollSync";
 
 class MemberList extends React.Component {
     constructor(props) {
@@ -33,7 +34,9 @@ class MemberList extends React.Component {
                     {/* Loop on each groups */}
                     {this.state.event_data.attendees.map(group => (
                         //this.show_group(group)
-                        <Group group={group} member_list={this}/>
+                        <ScrollSync>
+                            <Group group={group} member_list={this}/>
+                        </ScrollSync>
                     ))}
                 </ul>
             );

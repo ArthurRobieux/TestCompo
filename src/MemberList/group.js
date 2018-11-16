@@ -1,6 +1,8 @@
 import React from "react";
 
 import Member from './member.js';
+import ScrollSync from './ScrollSync.js';
+import ScrollSyncPane from './ScrollSyncPane.js';
 
 class Group extends React.Component {
 
@@ -56,11 +58,13 @@ class Group extends React.Component {
                     <div className={"li_ratings"}>Moy</div>
                     <div className={"li_ratings"}>Note</div>
                     <div className={"li_chore"}>Chores</div>
-                    <div className={"id_test_slider"}>
-                        {list_stats.map(stat => (
-                            <div className={"test_slider"}>{stat}</div>
-                        ))}
-                    </div>
+                    <ScrollSyncPane>
+                        <div className={"scrollable_stats"}>
+                            {list_stats.map(stat => (
+                                <div className={"scrollable_li_stats"}>{stat}</div>
+                            ))}
+                        </div>
+                    </ScrollSyncPane>
                     <div className="li_presence">Pres</div>
                 </div>
             );
@@ -89,6 +93,7 @@ class Group extends React.Component {
                                 member_list={this.props.member_list}/>
                     ))}
                 </ul>
+
 
             </li>
         );
