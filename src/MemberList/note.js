@@ -68,8 +68,17 @@ class Note extends React.Component {
                 }
             }
 
+            //If player is the actual user
+            if(profile_id === this.props.member_list.state.event_data.me.profile.id){
+                return(
+                    <div className={"li_ratings"}>
+                        -
+                    </div>
+                );
+            }
+
             // If no note, show ratings slider
-            if(note===null || note ===-1 || note ===undefined){
+            else if(note===null || note ===-1 || note ===undefined){
                 return(
                     <div className={"li_ratings"}>
                         {this.showRatingsSlider()}
