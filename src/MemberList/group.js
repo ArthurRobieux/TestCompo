@@ -56,9 +56,9 @@ class Group extends React.Component {
                     <div className={"li_ratings"}>Moy</div>
                     <div className={"li_ratings"}>Note</div>
                     <div className={"li_chore"}>Chores</div>
-                    <div id={"stats"}>
+                    <div className={"id_test_slider"}>
                         {list_stats.map(stat => (
-                            <div className={"li_stats"}>{stat}</div>
+                            <div className={"test_slider"}>{stat}</div>
                         ))}
                     </div>
                     <div className="li_presence">Pres</div>

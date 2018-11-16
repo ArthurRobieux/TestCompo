@@ -1,16 +1,17 @@
 import React from "react";
+import $ from "jquery";
 
 class Stats extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {player_stats_values: []}
+        this.state = {player_stats_values: [], actual_div: ''}
     }
 
     showPastStats(){
 
         // Ici on dispose de la liste des stats ainsi que du profile du joueur.
         // Grâce à ces ID on va chercher la valeur de chacun de ces stats.
-        if(this.props.member_list.state.event_data.is_past) {
+        if(this.props.member_list.state.event_data.is_past && this.props.group.slug_name === 'played') {
 
             const profile_id = this.props.result_profile.profile.id;
             var player_stats_values = [];
@@ -38,11 +39,12 @@ class Stats extends React.Component {
                 }
             }
 
+
             return (
-                <div id={"stats"}>
+                <div className={"id_test_slider"} onScroll={() => this.multipleScroll()}>
 
                     {this.state.player_stats_values.map(stat_value => (
-                        <div className={"li_stats"}>
+                        <div className={"test_slider"}>
                             {stat_value}
                         </div>
                     ))}
@@ -50,6 +52,37 @@ class Stats extends React.Component {
                 </div>
             );
         }
+
+    }
+
+    multipleScroll(){
+
+        // var all_stats = document.getElementsByClassName("id_test_slider");
+        //
+        // console.log("scrolling");
+        //
+        // for (var i = 0; i < all_stats.length; i++) {
+        //     if (all_stats[i].scrollLeft !== 0) {
+        //         this.state.actual_div = all_stats[i];
+        //         this.state.has_actual_div = true;
+        //     }
+        // }
+        //
+        // for(var j=0; j<all_stats.length; j++){
+        //     console.log(all_stats[j]);
+        //     console.log(all_stats[j].scrollLeft);
+        //     all_stats[j].scrollLeft = this.state.actual_div.scrollLeft;
+        // }
+        //
+        // console.log("MA DIV");
+        // console.log(this.state.actual_div);
+
+        var subCatContainer = document.getElementsByClassName("id_test_slider");
+
+        $(".id_test_slider").scroll(function() {
+            for(var i in subCatContainer)
+                $(subCatContainer[i]).scrollLeft($(this).scrollLeft());
+        });
 
     }
 
@@ -69,10 +102,10 @@ class Stats extends React.Component {
             this.props.member_list.setState({});
         }
     }
-
-    componentDidMount() {
-        this.adaptColumnSize();
-    }
+    //
+    // componentDidMount() {
+    //     this.adaptColumnSize();
+    // }
 
     // Render Table
     render() {

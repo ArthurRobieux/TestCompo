@@ -120,7 +120,37 @@ li:hover{
   background-color: #dddddd;
 }
 
-#stats{
+/*Test slider*/
+
+.id_test_slider {
+  background-color: #ececec;
+  overflow: auto;
+  white-space: nowrap;
+  width: 30%;
+  transition-duration: 0.2s;
+}
+
+.test_slider {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  width: 75px;
+  vertical-align: middle;
+
+}
+
+.id_test_slider:hover{
+  background-color: #dddddd;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/*----*/
+
+.stats{
   width: 35%;
   display: inline;
 }
@@ -132,7 +162,7 @@ li:hover{
   display: inline-block;
   float: left;
   text-align: center;
-  width: 15%;
+  width: 7%;
   padding:5px 0 5px 0;
   height: 0;
 }
@@ -367,3 +397,4 @@ a{
 .rate10:hover{
   background-color: rgba(27, 94, 32, 0.5);
 }
+
