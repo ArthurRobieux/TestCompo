@@ -123,16 +123,20 @@ li:hover{
 /*Scrollable Stats*/
 
 .scrollable_stats {
-  background-color: #ececec;
+  /*background-color: #f2f2f2;*/
   overflow: auto;
   white-space: nowrap;
   width: 30%;
   transition-duration: 0.2s;
+  height: 30px;
+  padding: 5px 0 5px 0;
+  position: relative;
+  bottom: 2px;
+  z-index:0;
 }
 
 .scrollable_li_stats {
   display: inline-block;
-  color: black;
   text-align: center;
   text-decoration: none;
   width: 75px;
@@ -140,9 +144,9 @@ li:hover{
 
 }
 
-.scrollable_stats:hover{
-  background-color: #dddddd;
-}
+/*.scrollable_stats:hover{*/
+  /*background-color: #dddddd;*/
+/*}*/
 
 ::-webkit-scrollbar {
     display: none;
@@ -151,7 +155,7 @@ li:hover{
 /*--------*/
 
 .stats{
-  width: 35%;
+  width: 30%;
   display: inline;
 }
 
@@ -166,6 +170,8 @@ li:hover{
   padding:5px 0 5px 0;
   height: 0;
 }
+
+/*---------*/
 
 .li_chore{
   white-space: nowrap;
@@ -201,7 +207,7 @@ li:hover{
   text-align: center;
   width: 15%;
   max-width: 30%;
-  padding:5px 0 5px 5px;
+  padding:5px 5px 5px 5px;
   height: 0;
 }
 
@@ -266,6 +272,7 @@ a{
   padding: 5px;
   white-space: normal;
   width: 125%;
+  z-index: 1;
 }
 
 .icon_task:hover + .chore_name, .chore_name:hover{
@@ -332,8 +339,7 @@ a{
 .donut_chart{
   position: relative;
   bottom: 21px;
-  left: 8px;
-  display: table;
+  display: block;
 }
 
 #show_ratings_slider:hover + .ratings_slider, .ratings_slider:hover{
@@ -343,10 +349,12 @@ a{
 .ratings_slider{
   position: relative;
   display: none;
-  background-color: #ececec;
   height: 30px;
   bottom: 22px;
   border-radius: 10px;
+  background: #ececec;
+  z-index: 1;
+
 }
 
 .rate1, .rate2, .rate3, .rate4, .rate5, .rate6, .rate7, .rate8, .rate9, .rate10{

@@ -55,9 +55,10 @@ class Group extends React.Component {
             return(
                 <div className="members_header">
                     <div className={"li_profile"}>Profile</div>
-                    <div className={"li_ratings"}>Moy</div>
+                    <div className={"li_ratings"}>Avg</div>
                     <div className={"li_ratings"}>Note</div>
                     <div className={"li_chore"}>Chores</div>
+                    <div className="li_presence">Pres</div>
                     <ScrollSyncPane>
                         <div className={"scrollable_stats"}>
                             {list_stats.map(stat => (
@@ -65,7 +66,6 @@ class Group extends React.Component {
                             ))}
                         </div>
                     </ScrollSyncPane>
-                    <div className="li_presence">Pres</div>
                 </div>
             );
         }

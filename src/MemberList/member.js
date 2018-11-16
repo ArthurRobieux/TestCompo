@@ -34,11 +34,11 @@ class Member extends React.Component {
                       group={this.props.group.slug_name}/>
                 {/*Chores*/}
                 <Chores member_list={this.props.member_list} result_profile={this.props.result_profile}/>
-                {/*Stats*/}
-                <Stats member_list={this.props.member_list} result_profile={this.props.result_profile}
-                    group={this.props.group}/>
                 {/*Presence*/}
                 <Presence member_list={this.props.member_list} result_profile={this.props.result_profile}
+                    group={this.props.group}/>
+                {/*Stats*/}
+                <Stats member_list={this.props.member_list} result_profile={this.props.result_profile}
                     group={this.props.group}/>
 
             </li>
