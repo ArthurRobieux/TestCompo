@@ -145,7 +145,40 @@ li:hover{
   position: relative;
   bottom: 2px;
   z-index:0;
+  /*border-left: 1px solid grey;*/
+  /*border-right: 1px solid grey;*/
+  /*box-shadow: inset -7px 0 5px -5px #333;*/
+  /*box-shadow: inset 5px 0 5px -5px #333;*/
+  /*-1em 0 0 #333*/
 }
+
+.scrollable_stats_header {
+  /*background-color: #f2f2f2;*/
+  overflow: auto;
+  white-space: nowrap;
+  width: 30%;
+  transition-duration: 0.2s;
+  height: 30px;
+  padding: 5px 0 0 0;
+  position: relative;
+  bottom: 2px;
+  z-index:0;
+}
+
+.scrollable_stats_header::-webkit-scrollbar {
+  width: 10px;
+  height: 1px;
+  background: #cccccc; /* or add it to the track */
+}
+
+.scrollable_stats_header::-webkit-scrollbar-thumb {
+    background: grey;
+}
+
+.scrollable_stats::-webkit-scrollbar {
+  display: none;
+}
+
 
 .scrollable_li_stats {
   display: inline-block;
@@ -159,10 +192,6 @@ li:hover{
 /*.scrollable_stats:hover{*/
   /*background-color: #dddddd;*/
 /*}*/
-
-::-webkit-scrollbar {
-    display: none;
-}
 
 /*--------*/
 

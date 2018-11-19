@@ -62,7 +62,7 @@ class Group extends React.Component {
                     <div className={"li_chore"}>Chores</div>
                     <div className="li_presence">Pres</div>
                     <ScrollSyncPane>
-                        <div className={"scrollable_stats"}>
+                        <div className={"scrollable_stats_header"}>
                             {list_stats.map(stat => (
                                 <div className={"scrollable_li_stats"}>{stat}</div>
                             ))}

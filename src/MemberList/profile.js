@@ -38,7 +38,7 @@ class Profile extends React.Component {
             <div className="li_profile">
                 <a href={"http://as-rocknroll.local.sporteasy.net:8000/profile/" + this.props.result_profile.profile.id + "/"}>
                     <img src={this.props.result_profile.profile.avatar["medium"]} alt="avatar" className={"avatar"}/>
-                    {/*{this.show_presence()}*/}
+                    {this.show_presence()}
                     <div className={"profile_name"}>
                         {this.props.result_profile.profile.first_name} {this.props.result_profile.profile.last_name}
                     </div>
