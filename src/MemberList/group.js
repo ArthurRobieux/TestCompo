@@ -30,6 +30,8 @@ class Group extends React.Component {
         else {
             document.getElementById(id).style.display = 'none';
         }
+
+        //console.log(this.props.member_list.state.event_data);
     }
 
     showMembersHeader(){

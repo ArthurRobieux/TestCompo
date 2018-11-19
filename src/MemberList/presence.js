@@ -67,12 +67,12 @@ class Presence extends React.Component {
             <div className="li_presence">
 
                 <div id={"show_logo_group"}>
-                    <img className={"logo_presence"} src={"Images/Plus.png"} alt={"show_logo_group"} />
+                    <img className={"logo_change_presence"} src={"Images/Plus.png"} alt={"show_logo_group"} />
                 </div>
 
                 <span className={"logo_group"} >
                     {this.props.member_list.state.attendance_group.map(logo_group_slug_name => (
-                        <img className="logo_presence" src={this.getGroupImage(logo_group_slug_name)} alt="logo_presence"
+                        <img className="logo_change_presence" src={this.getGroupImage(logo_group_slug_name)} alt="logo_change_presence"
                              onClick={() => this.changePresence(this.props.result_profile, logo_group_slug_name, this.props.group.slug_name)}/>
                     ))}
                 </span>
