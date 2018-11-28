@@ -1,3 +1,10 @@
+body {
+    background: lightgrey;
+}
+
+img{
+    border-radius:10px;
+}
 #banc{
   display: inline-block;
   vertical-align: top;
@@ -7,74 +14,95 @@
 #compo{
   display: inline-block;
   vertical-align: top;
-  width: 400px;
-  height: 600px;
-  background-image: url("http://static.footeo.com/uploads/astagnon/Medias/TERRAIN_DE_FOOT.gif?_ga=2.126975053.1777273737.1543316760-107477225.1543316760");
-  background-size: 400px 600px;
+  width: 620px;
+  height: 557px;
+  background-image: url("field.png");
+  background-size: 620px 557px;
+  margin: 10px;
 }
 
 .boxBanc{
-  width: 130px;
-  background: grey;
+  width: 200px;
+  background: #ececec;
   display: inline-block;
   border-radius: 10px;
-  height: 200px;
+  height: 557px;
   overflow: auto;
+  margin: 10px;
 }
 
 .boxPosition{
-  padding: 5px;
-  width: 53px;
-  height: 35px;
+  width: 62px;
+  height: 62px;
   background: white;
   border-radius: 10px;
   display: inline-block;
-}
-
-.draggableElement{
-  height: 50px;
-  border-radius: 50px;
-  margin: 5px;
+  background-image: url("field_position_empty.svg");
 }
 
 .box_position_1{
   position: absolute;
-  top: 90px;
-  left: 327px;
+  top: 520px;
+  left: 305px;
 }
 
 .box_position_2{
   position: absolute;
-  top: 170px;
+  top: 420px;
   left: 200px;
 
 }
 
 .box_position_3{
   position: absolute;
-  top: 170px;
-  left: 450px;
+  top: 420px;
+  left: 410px;
 }
 
 .box_position_4{
   position: absolute;
+  top: 330px;
+  left: 305px;
+}
+
+.box_position_5{
+  position: absolute;
   top: 250px;
-  left: 327px;
+  left: 160px;
 }
 
-.profileAvatar{
-  width: 30px;
+.box_position_6{
+  position: absolute;
+  top: 250px;
+  left: 450px;
 }
 
+.box_position_7{
+  position: absolute;
+  top: 125px;
+  left: 305px;
+}
 
+.compo_avatar{
+  width: 56px;
+  border: 3px solid white;
+}
+
+.draggableBancElement{
+    text-align: left;
+}
+
+.draggablePositionElement{
+    text-align: center;
+}
 
 
 /*---------------*/
+/*---------------*/
+/*---------------*/
+/*---------------*/
+/*---------------*/
 
-
-body {
-    background: lightgrey;
-}
 
 .fill {
     background-image: url('http://source.unsplash.com/random/150x150');

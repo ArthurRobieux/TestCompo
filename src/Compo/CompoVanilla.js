@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 
 class CompoVanilla extends Component {
 

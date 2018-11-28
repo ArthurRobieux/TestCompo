@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import Compo from './Compo/Compo.js';
-import DragDrop2 from './Compo/DragDrop2.js';
+// import DragDrop2 from './Compo/DragDrop2.js';
 import VanillaDnD from './Compo/VanillaDnD.js';
 import CompoVanilla from './Compo/CompoVanilla.js';
+
+import source from './lineup_before_event.json';
+
+const data = source;
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +21,7 @@ class App extends React.Component {
         return (
             <body>
                 <h1>Compo</h1>
-                <Compo/>
+                <Compo data={data}/>
                 <h1>Vanilla DnD</h1>
                 <VanillaDnD/>
                 <h1>Compo Vanilla</h1>
