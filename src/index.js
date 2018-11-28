@@ -2,53 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import MemberList from './MemberList/member_list.js';
+import Compo from './Compo/Compo.js';
+import DragDrop2 from './Compo/DragDrop2.js';
+import VanillaDnD from './Compo/VanillaDnD.js';
+import CompoVanilla from './Compo/CompoVanilla.js';
 
-// Constants
-
-const team_id = 6;
-const event_id = 74;    //132 = future, 131 = future with treshold, 74 = past
-const bearer = "Bearer b15dfb6dee52b68d5eafe5602ddc79afabf2717a";
-
-// App
-
-class TableApp extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {tab: 'table'}
-    }
-
-    changeTab(){
-        if(this.state.tab === 'table'){
-            this.setState({tab: 'compo'});
-        }
-        else{
-            this.setState({tab: 'table'});
-        }
-    }
-
-    showTab(){
-        if(this.state.tab === 'table'){
-            return(<MemberList team_id={team_id} event_id={event_id} bearer={bearer}/>);
-        }
-        else{
-            return(
-                <div>
-                    <h3>Compo</h3>
-                    <img className="compo" src="Images/Compo.png" alt="compo"/>
-                </div>
-            );
-        }
-
-
+        this.state = {}
     }
 
     render() {
         return (
-            <div id="global_content">
-                <button onClick={() => this.changeTab()}>Change Tab </button>
-                {this.showTab()}
-            </div>
+            <body>
+                <h1>Compo</h1>
+                <Compo/>
+                <h1>Vanilla DnD</h1>
+                <VanillaDnD/>
+                <h1>Compo Vanilla</h1>
+                <CompoVanilla/>
+            </body>
         );
     }
 }
@@ -56,6 +30,6 @@ class TableApp extends React.Component {
 //ReactDOM
 
 ReactDOM.render(
-  <TableApp/>,
+  <App/>,
   document.getElementById('root')
 );

@@ -1,464 +1,161 @@
-@font-face
-{
-font-family: LatoBlack;
-src: url('Lato-Black.ttf'),
-url('Lato-Black.ttf');
-}
-
-@font-face
-{
-font-family: LatoLight;
-src: url('Lato-Light.ttf'),
-url('Lato-Light.ttf');
-}
-
-body{
-  background-color:white;
-  font-family: LatoLight;
-  font-size: 14px;
-}
-
-h1, h3{
-  color:black;
-}
-
-button{
-  background: #ececec;
-  padding: 5px;
-  border: 1px #053582;
-  border-radius: 10px;
-  transition-duration: 0.2s;
-}
-
-button:focus {
-  outline: 0;
-}
-
-button:hover{
-  background: lightgrey;
-}
-
-#global_content{
-  text-align: center;
-  width: 50%;
-  margin-left:auto;
-  margin-right: auto;
-  color: black;
-  border: 1px solid black;
-  padding: 20px 20px 20px 20px;
-}
-
-#member_list{
-  margin-left:auto;
-  margin-right: auto;
-  border-collapse: collapse;
-  border: 2px solid #053582;
-  width: 100%;
-}
-
-@media screen and (max-width: 560px) {
-  #global_content {
-    width: 90%;
-  }
-}
-
-.compo{
-  width: 100%;
-  padding: 5px;
-}
-
-.present_members:hover, .available_members:hover, .rsvp_members:hover, .not_selected_members:hover,
-.absent_members:hover, .unavailable_members:hover, .waiting_list_members:hover, .played_members:hover,
-.not_played_members:hover,
-.participant:hover{
-  background-color: #dddddd;
-}
-
-.present_members, .available_members, .rsvp_members, .not_selected_members, .absent_members, .unavailable_members,
-.waiting_list_members, .played_members, .not_played_members, .participant_members{
-  background-color: #ececec;
-  transition-duration: 0.2s;
-  padding: 5px 0 5px 0;
-}
-
-.title_present_members, .title_available_members, .title_waiting_list_members, .title_played_members,
-.title_participant_members, .title_rsvp_members,
-.title_absent_members, .title_not_selected_members, .title_unavailable_members, .title_not_played_members{
-  cursor: pointer;
-  padding: 10px 0;
-  transition-duration: 0.2s;
-  user-select: none;
-  color: #053582;
-  font-family: LatoBlack;
-  background: #ececec;
-}
-
-#body_present_members, #body_absent_members, #body_rsvp_members, #body_not_selected_members, #body_waiting_list_members,
-#body_available_members, #body_unavailable_members, #body_not_played_members, #body_played_members,
-#body_participant_members{
-  display: block;
-  transition-duration: 1s;
-  width: 100%;
-}
-
-.members_header{
-  color: #053582;
-  width: 100%;
-  height: 30px;
-  margin: 0;
-  list-style: none outside none;
-  background-color: #ececec;
-  user-select: none;
-}
-
-#show_logo_group{
-  display: inline;
-}
-
-ul{
-  padding-inline-start: 0;
-}
-
-li{
-  width: 100%;
-  height: 30px;
-  margin: 0;
-  list-style: none outside none;
-  background-color: #ececec;
-  user-select: none;
-}
-
-li:hover{
-  background-color: #dddddd;
-}
-
-/*Scrollable Stats*/
-
-.scrollable_stats {
-  /*background-color: #f2f2f2;*/
-  overflow: auto;
-  white-space: nowrap;
-  width: 30%;
-  transition-duration: 0.2s;
-  height: 30px;
-  padding: 5px 0 5px 0;
-  position: relative;
-  bottom: 2px;
-  z-index:0;
-  /*border-left: 1px solid grey;*/
-  /*border-right: 1px solid grey;*/
-  /*box-shadow: inset -7px 0 5px -5px #333;*/
-  /*box-shadow: inset 5px 0 5px -5px #333;*/
-  /*-1em 0 0 #333*/
-}
-
-.scrollable_stats_header {
-  /*background-color: #f2f2f2;*/
-  overflow: auto;
-  white-space: nowrap;
-  width: 30%;
-  transition-duration: 0.2s;
-  height: 30px;
-  padding: 5px 0 0 0;
-  position: relative;
-  bottom: 2px;
-  z-index:0;
-}
-
-.scrollable_stats_header::-webkit-scrollbar {
-  width: 10px;
-  height: 1px;
-  background: #cccccc; /* or add it to the track */
-}
-
-.scrollable_stats_header::-webkit-scrollbar-thumb {
-    background: grey;
-}
-
-.scrollable_stats::-webkit-scrollbar {
-  display: none;
-}
-
-
-.scrollable_li_stats {
+#banc{
   display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  width: 75px;
-  vertical-align: middle;
-
-}
-
-/*.scrollable_stats:hover{*/
-  /*background-color: #dddddd;*/
-/*}*/
-
-/*--------*/
-
-.stats{
-  width: 30%;
-  display: inline;
-}
-
-.li_stats{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  display: inline-block;
-  float: left;
-  text-align: center;
-  width: 7%;
-  padding:5px 0 5px 0;
-  height: 0;
-}
-
-/*---------*/
-
-.li_chore{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  display: inline-block;
-  float: left;
-  text-align: center;
+  vertical-align: top;
   width: 10%;
-  padding:5px 0 5px 0;
-  height: 0;
 }
 
-.li_profile{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  display: table-cell;
-  float: left;
-  text-align: left;
-  width: 25%;
-  max-width: 30%;
-  padding:5px 0 5px 5px;
-  height: 0;
-}
-
-.li_presence{
-  float: right;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  display: table-cell;
-  text-align: center;
-  width: 15%;
-  max-width: 30%;
-  padding:5px 5px 5px 5px;
-  height: 0;
-}
-
-.li_ratings{
-  float: left;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  display: table-cell;
-  text-align: center;
-  width: 6%;
-  max-width: 30%;
-  padding:5px 0 5px 5px;
-  height: 0;
-}
-
-.attendance_group{
-  height: auto;
-}
-
-#notifications_list{
-  padding: 10px;
-  position : fixed;
-  top : 0;
-  right : 0;
-}
-
-.notification{
-  padding:5px;
-  margin: 2px;
-  width: 200px;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #ececec;
-}
-
-a{
-  color: black;
-  text-decoration: none;
-}
-
-/* Chores */
-
-.icon_task{
-  width: 20px;
-  height: 20px;
-}
-
-.chore_name{
-  position: relative;
-  color: white;
-  top: -28px;
-  background-color: #053582;
-  border: 1px solid black;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 14px;
-  display:none;
-  opacity: 0.9;
-  padding: 5px;
-  white-space: normal;
-  width: 125%;
-  z-index: 1;
-}
-
-.icon_task:hover + .chore_name, .chore_name:hover{
-  display: block;
-}
-
-.icon_delete_chore{
-  padding: 0 10px 0 0;
-  width: 12px;
-  height: 12px;
-  cursor: pointer;
-}
-
-.logo_group{
-  top : -28px;
-  display: none;
-  opacity: 0.9;
-  position: relative;
-  border-radius: 10px;
-  background-color: #053582;
-  border: 1px solid black;
-  text-align: center;
-}
-
-#show_logo_group:hover + .logo_group, .logo_group:hover{
-  display: block;
-}
-
-.logo_change_presence{
-  height: 18px;
-  padding: 2px;
-  cursor: pointer;
-  transition-duration: 0.5s;
-  transform: scale(0.9);
-  opacity: 0.9;
-}
-
-.logo_change_presence:hover{
-  transform: scale(1);
-  opacity: 1;
-}
-
-.logo_presence{
-  position: relative;
-  right: 12px;
-  height: 15px;
-  padding: 2px;
-  cursor: pointer;
-  transition-duration: 0.5s;
-}
-
-.profile_name{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  max-width: 70%;
+#compo{
   display: inline-block;
-  position: relative;
-  top: -5px;
+  vertical-align: top;
+  width: 400px;
+  height: 600px;
+  background-image: url("http://static.footeo.com/uploads/astagnon/Medias/TERRAIN_DE_FOOT.gif?_ga=2.126975053.1777273737.1543316760-107477225.1543316760");
+  background-size: 400px 600px;
+}
+
+.boxBanc{
+  width: 130px;
+  background: grey;
+  display: inline-block;
+  border-radius: 10px;
+  height: 200px;
+  overflow: auto;
+}
+
+.boxPosition{
   padding: 5px;
-
-}
-
-.avatar{
-  position: relative;
-  top: -5px;
-  width: 25px;
-  border-radius: 100px;
-  border: 1px solid black;
-  color: #053582;
-}
-
-.donut_chart{
-  position: relative;
-  bottom: 21px;
-  display: block;
-}
-
-#show_ratings_slider{
-  padding: 5px;
-  border-radius: 50px;
+  width: 53px;
+  height: 35px;
   background: white;
-}
-
-#show_ratings_slider:hover + .ratings_slider, .ratings_slider:hover{
-  display: table;
-}
-
-.ratings_slider{
-  position: relative;
-  display: none;
-  height: 30px;
-  bottom: 22px;
   border-radius: 10px;
-  background: #ececec;
-  z-index: 1;
+  display: inline-block;
+}
+
+.draggableElement{
+  height: 50px;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+.box_position_1{
+  position: absolute;
+  top: 90px;
+  left: 327px;
+}
+
+.box_position_2{
+  position: absolute;
+  top: 170px;
+  left: 200px;
 
 }
 
-.rate1, .rate2, .rate3, .rate4, .rate5, .rate6, .rate7, .rate8, .rate9, .rate10{
-  position: relative;
-  display: inline;
-  cursor: pointer;
-  border-radius: 10px;
-  top: 6px;
-  padding: 5px;
+.box_position_3{
+  position: absolute;
+  top: 170px;
+  left: 450px;
 }
 
-.rate1:hover{
-  background-color: rgba(213, 0, 0, 0.5);
+.box_position_4{
+  position: absolute;
+  top: 250px;
+  left: 327px;
 }
 
-.rate2:hover{
-  background-color: rgba(183, 28, 28, 0.5);
+.profileAvatar{
+  width: 30px;
 }
 
-.rate3:hover{
-  background-color: rgba(211, 47, 47, 0.5);
+
+
+
+/*---------------*/
+
+
+body {
+    background: lightgrey;
 }
 
-.rate4:hover{
-  background-color: rgba(244, 67, 54, 0.5);
+.fill {
+    background-image: url('http://source.unsplash.com/random/150x150');
+    position: relative;
+    height: 150px;
+    width: 150px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
 }
 
-.rate5:hover{
-  background-color: rgba(245, 124, 0, 0.5);
+
+.empty {
+    display: inline-block;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    border: 3px salmon solid;
+    background-color: white;
 }
 
-.rate6:hover{
-  background-color: rgba(139, 195, 74, 0.5);
+.fill2 {
+    background-image: url('http://source.unsplash.com/random/150x150');
+    background-size: 75px 75px;
+    position: relative;
+    height: 75px;
+    width: 75px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    border-radius: 50px;
 }
 
-.rate7:hover{
-  background-color: rgba(104, 159, 56, 0.5);
+
+.empty2 {
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+    border: 3px salmon solid;
+    background-color: white;
+    position: absolute;
+    border-radius: 50px;
 }
 
-.rate8:hover{
-  background-color: rgba(76, 175, 80, 0.5);
+
+
+.hold {
+    border: solid #ccc 4px;
 }
 
-.rate9:hover{
-  background-color: rgba(56, 142, 60, 0.5);
+.hovered {
+    background: #f4f4f4;
+    border-style: dashed;
 }
 
-.rate10:hover{
-  background-color: rgba(27, 94, 32, 0.5);
+.invisible {
+    display: none;
 }
 
+#box1{
+  top: 1050px;
+  left: 154px;
+}
+
+#box2{
+  top: 1300px;
+  left: 104px;
+}
+
+#box3{
+  top: 1300px;
+  left: 204px;
+}
+
+#box4{
+  top: 1125px;
+  left: 54px;
+}
+
+#box5{
+  top: 1125px;
+  left: 254px;
+}
